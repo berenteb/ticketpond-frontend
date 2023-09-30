@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground: #000;
-  --background: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: #fff;
-    --background: #000;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background-color: var(--background);
+  @apply bg-slate-50 min-h-screen;
+}
+
+main {
+  @apply w-full max-w-screen-lg mx-auto py-10 px-5;
+}
+
+main > *:not(:first-child) {
+  @apply mt-10;
+}
+
+.body-paragraph {
+  @apply text-slate-500;
 }

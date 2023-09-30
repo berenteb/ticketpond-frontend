@@ -1,16 +1,16 @@
+import { ExperienceCard } from '@/components/experience-card/ExperienceCard';
 import { apiService } from '@/services/api.service';
 
 export default async function Home() {
   const experiences = await apiService.experienceControllerGetExperiences();
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <h1 className='text-6xl font-bold'>Ticketpond</h1>
-      {experiences.data?.map((experience) => (
-        <div key={experience.id}>
-          <h2>{experience.name}</h2>
-          <p>{experience.description}</p>
-        </div>
-      ))}
+    <main>
+      <h1 className='text-5xl font-bold text-slate-300'>A következő élményed itt vár.</h1>
+      <div className='grid grid-cols-3 gap-4 mt-10'>
+        {experiences.data.map((experience) => (
+          <ExperienceCard experience={experience} key={experience.id} />
+        ))}
+      </div>
     </main>
   );
 }
