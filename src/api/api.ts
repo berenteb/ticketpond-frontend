@@ -13,26 +13,26 @@
  */
 
 
-import type {AxiosInstance, AxiosPromise, AxiosRequestConfig} from 'axios';
+import type { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
-import type {RequestArgs} from './base';
+import type { RequestArgs } from './base';
 // @ts-ignore
-import {BASE_PATH, BaseAPI, COLLECTION_FORMATS, RequiredError} from './base';
+import { BASE_PATH, BaseAPI, COLLECTION_FORMATS, RequiredError } from './base';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import {
-    assertParamExists,
-    createRequestFunction,
-    DUMMY_BASE_URL,
-    serializeDataIfNeeded,
-    setApiKeyToObject,
-    setBasicAuthToObject,
-    setBearerAuthToObject,
-    setOAuthToObject,
-    setSearchParams,
-    toPathString
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString,
 } from './common';
-import type {Configuration} from './configuration';
+import type { Configuration } from './configuration';
 
 /**
  *
@@ -40,18 +40,18 @@ import type {Configuration} from './configuration';
  * @interface AddToCartDto
  */
 export interface AddToCartDto {
-    /**
-     *
-     * @type {string}
-     * @memberof AddToCartDto
-     */
-    'ticketId': string;
-    /**
-     *
-     * @type {number}
-     * @memberof AddToCartDto
-     */
-    'quantity': number;
+  /**
+   *
+   * @type {string}
+   * @memberof AddToCartDto
+   */
+  'ticketId': string;
+  /**
+   *
+   * @type {number}
+   * @memberof AddToCartDto
+   */
+  'quantity': number;
 }
 
 /**
@@ -60,24 +60,24 @@ export interface AddToCartDto {
  * @interface CartDto
  */
 export interface CartDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CartDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CartDto
-     */
-    'customerId': string;
-    /**
-     *
-     * @type {Array<CartItemDto>}
-     * @memberof CartDto
-     */
-    'items': Array<CartItemDto>;
+  /**
+   *
+   * @type {string}
+   * @memberof CartDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CartDto
+   */
+  'customerId': string;
+  /**
+   *
+   * @type {Array<CartItemDto>}
+   * @memberof CartDto
+   */
+  'items': Array<CartItemDto>;
 }
 
 /**
@@ -86,30 +86,30 @@ export interface CartDto {
  * @interface CartItemDto
  */
 export interface CartItemDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CartItemDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CartItemDto
-     */
-    'cartId': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CartItemDto
-     */
-    'ticketId': string;
-    /**
-     *
-     * @type {TicketDto}
-     * @memberof CartItemDto
-     */
-    'ticket': TicketDto;
+  /**
+   *
+   * @type {string}
+   * @memberof CartItemDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CartItemDto
+   */
+  'cartId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CartItemDto
+   */
+  'ticketId': string;
+  /**
+   *
+   * @type {TicketDto}
+   * @memberof CartItemDto
+   */
+  'ticket': TicketDto;
 }
 
 /**
@@ -118,36 +118,36 @@ export interface CartItemDto {
  * @interface CreateCustomerDto
  */
 export interface CreateCustomerDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateCustomerDto
-     */
-    'firstName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateCustomerDto
-     */
-    'lastName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateCustomerDto
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateCustomerDto
-     */
-    'address': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateCustomerDto
-     */
-    'phone': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCustomerDto
+   */
+  'firstName': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCustomerDto
+   */
+  'lastName': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCustomerDto
+   */
+  'email': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCustomerDto
+   */
+  'address': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCustomerDto
+   */
+  'phone': string;
 }
 
 /**
@@ -156,42 +156,42 @@ export interface CreateCustomerDto {
  * @interface CreateExperienceDto
  */
 export interface CreateExperienceDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'startDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'endDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'bannerImage': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'merchantId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'startDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'endDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'bannerImage': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateExperienceDto
+   */
+  'merchantId': string;
 }
 
 /**
@@ -200,36 +200,36 @@ export interface CreateExperienceDto {
  * @interface CreateMerchantDto
  */
 export interface CreateMerchantDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateMerchantDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateMerchantDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateMerchantDto
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateMerchantDto
-     */
-    'address': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateMerchantDto
-     */
-    'phone': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateMerchantDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateMerchantDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateMerchantDto
+   */
+  'email': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateMerchantDto
+   */
+  'address': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateMerchantDto
+   */
+  'phone': string;
 }
 
 /**
@@ -238,42 +238,42 @@ export interface CreateMerchantDto {
  * @interface CreateTicketDto
  */
 export interface CreateTicketDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateTicketDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateTicketDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateTicketDto
-     */
-    'price': number;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateTicketDto
-     */
-    'validFrom': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateTicketDto
-     */
-    'validTo': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateTicketDto
-     */
-    'experienceId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTicketDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTicketDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {number}
+   * @memberof CreateTicketDto
+   */
+  'price': number;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTicketDto
+   */
+  'validFrom': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTicketDto
+   */
+  'validTo': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTicketDto
+   */
+  'experienceId': string;
 }
 
 /**
@@ -282,42 +282,42 @@ export interface CreateTicketDto {
  * @interface CustomerDto
  */
 export interface CustomerDto {
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'firstName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'lastName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'address': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    'phone': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'firstName': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'lastName': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'email': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'address': string;
+  /**
+   *
+   * @type {string}
+   * @memberof CustomerDto
+   */
+  'phone': string;
 }
 
 /**
@@ -326,60 +326,60 @@ export interface CustomerDto {
  * @interface DeepExperienceDto
  */
 export interface DeepExperienceDto {
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'merchantId': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'startDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'endDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepExperienceDto
-     */
-    'bannerImage': string;
-    /**
-     *
-     * @type {MerchantDto}
-     * @memberof DeepExperienceDto
-     */
-    'merchant': MerchantDto;
-    /**
-     *
-     * @type {Array<TicketDto>}
-     * @memberof DeepExperienceDto
-     */
-    'tickets': Array<TicketDto>;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'merchantId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'startDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'endDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepExperienceDto
+   */
+  'bannerImage': string;
+  /**
+   *
+   * @type {MerchantDto}
+   * @memberof DeepExperienceDto
+   */
+  'merchant': MerchantDto;
+  /**
+   *
+   * @type {Array<TicketDto>}
+   * @memberof DeepExperienceDto
+   */
+  'tickets': Array<TicketDto>;
 }
 
 /**
@@ -388,48 +388,48 @@ export interface DeepExperienceDto {
  * @interface DeepTicketDto
  */
 export interface DeepTicketDto {
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {number}
-     * @memberof DeepTicketDto
-     */
-    'price': number;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'validFrom': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'validTo': string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeepTicketDto
-     */
-    'experienceId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {number}
+   * @memberof DeepTicketDto
+   */
+  'price': number;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'validFrom': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'validTo': string;
+  /**
+   *
+   * @type {string}
+   * @memberof DeepTicketDto
+   */
+  'experienceId': string;
 }
 
 /**
@@ -438,48 +438,48 @@ export interface DeepTicketDto {
  * @interface ExperienceDto
  */
 export interface ExperienceDto {
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'merchantId': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'startDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'endDate': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ExperienceDto
-     */
-    'bannerImage': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'merchantId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'startDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'endDate': string;
+  /**
+   *
+   * @type {string}
+   * @memberof ExperienceDto
+   */
+  'bannerImage': string;
 }
 
 /**
@@ -488,42 +488,42 @@ export interface ExperienceDto {
  * @interface MerchantDto
  */
 export interface MerchantDto {
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'address': string;
-    /**
-     *
-     * @type {string}
-     * @memberof MerchantDto
-     */
-    'phone': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'email': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'address': string;
+  /**
+   *
+   * @type {string}
+   * @memberof MerchantDto
+   */
+  'phone': string;
 }
 
 /**
@@ -532,42 +532,42 @@ export interface MerchantDto {
  * @interface OrderDto
  */
 export interface OrderDto {
-    /**
-     *
-     * @type {string}
-     * @memberof OrderDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderDto
-     */
-    'customerId': string;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderDto
-     */
-    'createdAt': string;
-    /**
-     *
-     * @type {Array<OrderItemDto>}
-     * @memberof OrderDto
-     */
-    'items': Array<OrderItemDto>;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderDto
-     */
-    'paymentStatus': string;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderDto
-     */
-    'orderStatus': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderDto
+   */
+  'customerId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderDto
+   */
+  'createdAt': string;
+  /**
+   *
+   * @type {Array<OrderItemDto>}
+   * @memberof OrderDto
+   */
+  'items': Array<OrderItemDto>;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderDto
+   */
+  'paymentStatus': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderDto
+   */
+  'orderStatus': string;
 }
 
 /**
@@ -576,36 +576,36 @@ export interface OrderDto {
  * @interface OrderItemDto
  */
 export interface OrderItemDto {
-    /**
-     *
-     * @type {string}
-     * @memberof OrderItemDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderItemDto
-     */
-    'orderId': string;
-    /**
-     *
-     * @type {number}
-     * @memberof OrderItemDto
-     */
-    'price': number;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderItemDto
-     */
-    'serialNumber': string;
-    /**
-     *
-     * @type {string}
-     * @memberof OrderItemDto
-     */
-    'ticketId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderItemDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderItemDto
+   */
+  'orderId': string;
+  /**
+   *
+   * @type {number}
+   * @memberof OrderItemDto
+   */
+  'price': number;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderItemDto
+   */
+  'serialNumber': string;
+  /**
+   *
+   * @type {string}
+   * @memberof OrderItemDto
+   */
+  'ticketId': string;
 }
 
 /**
@@ -614,18 +614,18 @@ export interface OrderItemDto {
  * @interface RemoveFromCartDto
  */
 export interface RemoveFromCartDto {
-    /**
-     *
-     * @type {string}
-     * @memberof RemoveFromCartDto
-     */
-    'ticketId': string;
-    /**
-     *
-     * @type {number}
-     * @memberof RemoveFromCartDto
-     */
-    'quantity': number;
+  /**
+   *
+   * @type {string}
+   * @memberof RemoveFromCartDto
+   */
+  'ticketId': string;
+  /**
+   *
+   * @type {number}
+   * @memberof RemoveFromCartDto
+   */
+  'quantity': number;
 }
 
 /**
@@ -634,48 +634,48 @@ export interface RemoveFromCartDto {
  * @interface TicketDto
  */
 export interface TicketDto {
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'description': string;
-    /**
-     *
-     * @type {number}
-     * @memberof TicketDto
-     */
-    'price': number;
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'validFrom': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'validTo': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TicketDto
-     */
-    'experienceId': string;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'id': string;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'name': string;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'description': string;
+  /**
+   *
+   * @type {number}
+   * @memberof TicketDto
+   */
+  'price': number;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'validFrom': string;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'validTo': string;
+  /**
+   *
+   * @type {string}
+   * @memberof TicketDto
+   */
+  'experienceId': string;
 }
 
 /**
@@ -684,36 +684,36 @@ export interface TicketDto {
  * @interface UpdateCustomerDto
  */
 export interface UpdateCustomerDto {
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateCustomerDto
-     */
-    'firstName'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateCustomerDto
-     */
-    'lastName'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateCustomerDto
-     */
-    'email'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateCustomerDto
-     */
-    'address'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateCustomerDto
-     */
-    'phone'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateCustomerDto
+   */
+  'firstName'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateCustomerDto
+   */
+  'lastName'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateCustomerDto
+   */
+  'email'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateCustomerDto
+   */
+  'address'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateCustomerDto
+   */
+  'phone'?: string;
 }
 
 /**
@@ -722,36 +722,36 @@ export interface UpdateCustomerDto {
  * @interface UpdateExperienceDto
  */
 export interface UpdateExperienceDto {
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateExperienceDto
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateExperienceDto
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateExperienceDto
-     */
-    'startDate'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateExperienceDto
-     */
-    'endDate'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateExperienceDto
-     */
-    'bannerImage'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateExperienceDto
+   */
+  'name'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateExperienceDto
+   */
+  'description'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateExperienceDto
+   */
+  'startDate'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateExperienceDto
+   */
+  'endDate'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateExperienceDto
+   */
+  'bannerImage'?: string;
 }
 
 /**
@@ -760,36 +760,36 @@ export interface UpdateExperienceDto {
  * @interface UpdateMerchantDto
  */
 export interface UpdateMerchantDto {
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateMerchantDto
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateMerchantDto
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateMerchantDto
-     */
-    'email'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateMerchantDto
-     */
-    'address'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateMerchantDto
-     */
-    'phone'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateMerchantDto
+   */
+  'name'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateMerchantDto
+   */
+  'description'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateMerchantDto
+   */
+  'email'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateMerchantDto
+   */
+  'address'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateMerchantDto
+   */
+  'phone'?: string;
 }
 
 /**
@@ -798,1615 +798,1615 @@ export interface UpdateMerchantDto {
  * @interface UpdateTicketDto
  */
 export interface UpdateTicketDto {
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTicketDto
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTicketDto
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof UpdateTicketDto
-     */
-    'price'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTicketDto
-     */
-    'validFrom'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTicketDto
-     */
-    'validTo'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateTicketDto
+   */
+  'name'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateTicketDto
+   */
+  'description'?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof UpdateTicketDto
+   */
+  'price'?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateTicketDto
+   */
+  'validFrom'?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateTicketDto
+   */
+  'validTo'?: string;
 }
 
 /**
  * DefaultApi - axios parameter creator
  * @export
  */
-export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appControllerGetHello: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {AddToCartDto} addToCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerAddItemToCart: async (id: string, addToCartDto: AddToCartDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('cartControllerAddItemToCart', 'id', id)
-            // verify required parameter 'addToCartDto' is not null or undefined
-            assertParamExists('cartControllerAddItemToCart', 'addToCartDto', addToCartDto)
-            const localVarPath = `/cart/{id}/add`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(addToCartDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerCheckout: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('cartControllerCheckout', 'id', id)
-            const localVarPath = `/cart/{id}/checkout`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerGetCartForUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('cartControllerGetCartForUser', 'id', id)
-            const localVarPath = `/cart/user/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {RemoveFromCartDto} removeFromCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerRemoveItemFromCart: async (id: string, removeFromCartDto: RemoveFromCartDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('cartControllerRemoveItemFromCart', 'id', id)
-            // verify required parameter 'removeFromCartDto' is not null or undefined
-            assertParamExists('cartControllerRemoveItemFromCart', 'removeFromCartDto', removeFromCartDto)
-            const localVarPath = `/cart/{id}/remove`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(removeFromCartDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {CreateCustomerDto} createCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerCreateCustomer: async (createCustomerDto: CreateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createCustomerDto' is not null or undefined
-            assertParamExists('customerControllerCreateCustomer', 'createCustomerDto', createCustomerDto)
-            const localVarPath = `/customer`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createCustomerDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerDeleteCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerControllerDeleteCustomer', 'id', id)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerGetCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerControllerGetCustomer', 'id', id)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerGetCustomers: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/customer`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateCustomerDto} updateCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerUpdateCustomer: async (id: string, updateCustomerDto: UpdateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerControllerUpdateCustomer', 'id', id)
-            // verify required parameter 'updateCustomerDto' is not null or undefined
-            assertParamExists('customerControllerUpdateCustomer', 'updateCustomerDto', updateCustomerDto)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateCustomerDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {CreateExperienceDto} createExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerCreateExperience: async (createExperienceDto: CreateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createExperienceDto' is not null or undefined
-            assertParamExists('experienceControllerCreateExperience', 'createExperienceDto', createExperienceDto)
-            const localVarPath = `/experience`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createExperienceDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerDeleteExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('experienceControllerDeleteExperience', 'id', id)
-            const localVarPath = `/experience/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerGetExperienceById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('experienceControllerGetExperienceById', 'id', id)
-            const localVarPath = `/experience/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerGetExperiences: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/experience`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateExperienceDto} updateExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerUpdateExperience: async (id: string, updateExperienceDto: UpdateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('experienceControllerUpdateExperience', 'id', id)
-            // verify required parameter 'updateExperienceDto' is not null or undefined
-            assertParamExists('experienceControllerUpdateExperience', 'updateExperienceDto', updateExperienceDto)
-            const localVarPath = `/experience/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateExperienceDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {CreateMerchantDto} createMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerCreateMerchant: async (createMerchantDto: CreateMerchantDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createMerchantDto' is not null or undefined
-            assertParamExists('merchantControllerCreateMerchant', 'createMerchantDto', createMerchantDto)
-            const localVarPath = `/merchant`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createMerchantDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerDeleteMerchant: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('merchantControllerDeleteMerchant', 'id', id)
-            const localVarPath = `/merchant/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerGetMerchant: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('merchantControllerGetMerchant', 'id', id)
-            const localVarPath = `/merchant/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerGetMerchants: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/merchant`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateMerchantDto} updateMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerUpdateMerchant: async (id: string, updateMerchantDto: UpdateMerchantDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('merchantControllerUpdateMerchant', 'id', id)
-            // verify required parameter 'updateMerchantDto' is not null or undefined
-            assertParamExists('merchantControllerUpdateMerchant', 'updateMerchantDto', updateMerchantDto)
-            const localVarPath = `/merchant/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateMerchantDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerDeleteOrder: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('orderControllerDeleteOrder', 'id', id)
-            const localVarPath = `/order/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrder: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('orderControllerGetOrder', 'id', id)
-            const localVarPath = `/order/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrders: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/order`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrdersByUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('orderControllerGetOrdersByUser', 'id', id)
-            const localVarPath = `/order/user/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {CreateTicketDto} createTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerCreateTicket: async (createTicketDto: CreateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createTicketDto' is not null or undefined
-            assertParamExists('ticketControllerCreateTicket', 'createTicketDto', createTicketDto)
-            const localVarPath = `/ticket`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createTicketDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerDeleteTicket: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerDeleteTicket', 'id', id)
-            const localVarPath = `/ticket/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTicketById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerGetTicketById', 'id', id)
-            const localVarPath = `/ticket/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTickets: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/ticket`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTicketsForExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerGetTicketsForExperience', 'id', id)
-            const localVarPath = `/ticket/experience/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateTicketDto} updateTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerUpdateTicket: async (id: string, updateTicketDto: UpdateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerUpdateTicket', 'id', id)
-            // verify required parameter 'updateTicketDto' is not null or undefined
-            assertParamExists('ticketControllerUpdateTicket', 'updateTicketDto', updateTicketDto)
-            const localVarPath = `/ticket/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = {method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateTicketDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
+export const DefaultApiAxiosParamCreator = function(configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    appControllerGetHello: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {AddToCartDto} addToCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerAddItemToCart: async (id: string, addToCartDto: AddToCartDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('cartControllerAddItemToCart', 'id', id);
+      // verify required parameter 'addToCartDto' is not null or undefined
+      assertParamExists('cartControllerAddItemToCart', 'addToCartDto', addToCartDto);
+      const localVarPath = `/cart/{id}/add`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(addToCartDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerCheckout: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('cartControllerCheckout', 'id', id);
+      const localVarPath = `/cart/{id}/checkout`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerGetCartForUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('cartControllerGetCartForUser', 'id', id);
+      const localVarPath = `/cart/user/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {RemoveFromCartDto} removeFromCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerRemoveItemFromCart: async (id: string, removeFromCartDto: RemoveFromCartDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('cartControllerRemoveItemFromCart', 'id', id);
+      // verify required parameter 'removeFromCartDto' is not null or undefined
+      assertParamExists('cartControllerRemoveItemFromCart', 'removeFromCartDto', removeFromCartDto);
+      const localVarPath = `/cart/{id}/remove`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(removeFromCartDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateCustomerDto} createCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerCreateCustomer: async (createCustomerDto: CreateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'createCustomerDto' is not null or undefined
+      assertParamExists('customerControllerCreateCustomer', 'createCustomerDto', createCustomerDto);
+      const localVarPath = `/customer`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(createCustomerDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerDeleteCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('customerControllerDeleteCustomer', 'id', id);
+      const localVarPath = `/customer/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerGetCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('customerControllerGetCustomer', 'id', id);
+      const localVarPath = `/customer/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerGetCustomers: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/customer`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateCustomerDto} updateCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerUpdateCustomer: async (id: string, updateCustomerDto: UpdateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('customerControllerUpdateCustomer', 'id', id);
+      // verify required parameter 'updateCustomerDto' is not null or undefined
+      assertParamExists('customerControllerUpdateCustomer', 'updateCustomerDto', updateCustomerDto);
+      const localVarPath = `/customer/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(updateCustomerDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateExperienceDto} createExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerCreateExperience: async (createExperienceDto: CreateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'createExperienceDto' is not null or undefined
+      assertParamExists('experienceControllerCreateExperience', 'createExperienceDto', createExperienceDto);
+      const localVarPath = `/experience`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(createExperienceDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerDeleteExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('experienceControllerDeleteExperience', 'id', id);
+      const localVarPath = `/experience/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerGetExperienceById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('experienceControllerGetExperienceById', 'id', id);
+      const localVarPath = `/experience/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerGetExperiences: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/experience`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateExperienceDto} updateExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerUpdateExperience: async (id: string, updateExperienceDto: UpdateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('experienceControllerUpdateExperience', 'id', id);
+      // verify required parameter 'updateExperienceDto' is not null or undefined
+      assertParamExists('experienceControllerUpdateExperience', 'updateExperienceDto', updateExperienceDto);
+      const localVarPath = `/experience/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(updateExperienceDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateMerchantDto} createMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerCreateMerchant: async (createMerchantDto: CreateMerchantDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'createMerchantDto' is not null or undefined
+      assertParamExists('merchantControllerCreateMerchant', 'createMerchantDto', createMerchantDto);
+      const localVarPath = `/merchant`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(createMerchantDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerDeleteMerchant: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('merchantControllerDeleteMerchant', 'id', id);
+      const localVarPath = `/merchant/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerGetMerchant: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('merchantControllerGetMerchant', 'id', id);
+      const localVarPath = `/merchant/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerGetMerchants: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/merchant`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateMerchantDto} updateMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerUpdateMerchant: async (id: string, updateMerchantDto: UpdateMerchantDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('merchantControllerUpdateMerchant', 'id', id);
+      // verify required parameter 'updateMerchantDto' is not null or undefined
+      assertParamExists('merchantControllerUpdateMerchant', 'updateMerchantDto', updateMerchantDto);
+      const localVarPath = `/merchant/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(updateMerchantDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerDeleteOrder: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('orderControllerDeleteOrder', 'id', id);
+      const localVarPath = `/order/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrder: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('orderControllerGetOrder', 'id', id);
+      const localVarPath = `/order/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrders: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/order`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrdersByUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('orderControllerGetOrdersByUser', 'id', id);
+      const localVarPath = `/order/user/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateTicketDto} createTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerCreateTicket: async (createTicketDto: CreateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'createTicketDto' is not null or undefined
+      assertParamExists('ticketControllerCreateTicket', 'createTicketDto', createTicketDto);
+      const localVarPath = `/ticket`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(createTicketDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerDeleteTicket: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('ticketControllerDeleteTicket', 'id', id);
+      const localVarPath = `/ticket/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTicketById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('ticketControllerGetTicketById', 'id', id);
+      const localVarPath = `/ticket/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTickets: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/ticket`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTicketsForExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('ticketControllerGetTicketsForExperience', 'id', id);
+      const localVarPath = `/ticket/experience/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateTicketDto} updateTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerUpdateTicket: async (id: string, updateTicketDto: UpdateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('ticketControllerUpdateTicket', 'id', id);
+      // verify required parameter 'updateTicketDto' is not null or undefined
+      assertParamExists('ticketControllerUpdateTicket', 'updateTicketDto', updateTicketDto);
+      const localVarPath = `/ticket/{id}`
+        .replace(`{${'id'}}`, encodeURIComponent(String(id)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      localVarRequestOptions.data = serializeDataIfNeeded(updateTicketDto, localVarRequestOptions, configuration);
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
 };
 
 /**
  * DefaultApi - functional programming interface
  * @export
  */
-export const DefaultApiFp = function (configuration?: Configuration) {
-    const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async appControllerGetHello(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.appControllerGetHello(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {AddToCartDto} addToCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerAddItemToCart(id, addToCartDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cartControllerCheckout(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerCheckout(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cartControllerGetCartForUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerGetCartForUser(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {RemoveFromCartDto} removeFromCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerRemoveItemFromCart(id, removeFromCartDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {CreateCustomerDto} createCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerCreateCustomer(createCustomerDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async customerControllerDeleteCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerDeleteCustomer(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async customerControllerGetCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetCustomer(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async customerControllerGetCustomers(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetCustomers(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateCustomerDto} updateCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerUpdateCustomer(id, updateCustomerDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {CreateExperienceDto} createExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerCreateExperience(createExperienceDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerDeleteExperience(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerGetExperienceById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerGetExperienceById(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerGetExperiences(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerGetExperiences(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateExperienceDto} updateExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerUpdateExperience(id, updateExperienceDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {CreateMerchantDto} createMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerCreateMerchant(createMerchantDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async merchantControllerDeleteMerchant(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerDeleteMerchant(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async merchantControllerGetMerchant(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMerchant(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async merchantControllerGetMerchants(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MerchantDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMerchants(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateMerchantDto} updateMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerUpdateMerchant(id, updateMerchantDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async orderControllerDeleteOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerDeleteOrder(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async orderControllerGetOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrderDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrder(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async orderControllerGetOrders(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrders(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrdersByUser(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {CreateTicketDto} createTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerCreateTicket(createTicketDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerDeleteTicket(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerGetTicketById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepTicketDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTicketById(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerGetTickets(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTickets(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTicketsForExperience(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateTicketDto} updateTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerUpdateTicket(id, updateTicketDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
+export const DefaultApiFp = function(configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async appControllerGetHello(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.appControllerGetHello(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {AddToCartDto} addToCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerAddItemToCart(id, addToCartDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async cartControllerCheckout(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerCheckout(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async cartControllerGetCartForUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerGetCartForUser(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {RemoveFromCartDto} removeFromCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerRemoveItemFromCart(id, removeFromCartDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {CreateCustomerDto} createCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerCreateCustomer(createCustomerDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async customerControllerDeleteCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerDeleteCustomer(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async customerControllerGetCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetCustomer(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async customerControllerGetCustomers(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetCustomers(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateCustomerDto} updateCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerUpdateCustomer(id, updateCustomerDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {CreateExperienceDto} createExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerCreateExperience(createExperienceDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerDeleteExperience(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async experienceControllerGetExperienceById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepExperienceDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerGetExperienceById(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async experienceControllerGetExperiences(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ExperienceDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerGetExperiences(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateExperienceDto} updateExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerUpdateExperience(id, updateExperienceDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {CreateMerchantDto} createMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerCreateMerchant(createMerchantDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async merchantControllerDeleteMerchant(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerDeleteMerchant(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async merchantControllerGetMerchant(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMerchant(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async merchantControllerGetMerchants(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MerchantDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMerchants(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateMerchantDto} updateMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerUpdateMerchant(id, updateMerchantDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async orderControllerDeleteOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerDeleteOrder(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async orderControllerGetOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrderDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrder(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async orderControllerGetOrders(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrders(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrdersByUser(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {CreateTicketDto} createTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerCreateTicket(createTicketDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerDeleteTicket(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerGetTicketById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepTicketDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTicketById(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerGetTickets(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTickets(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTicketsForExperience(id, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateTicketDto} updateTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerUpdateTicket(id, updateTicketDto, options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+  };
 };
 
 /**
  * DefaultApi - factory interface
  * @export
  */
-export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = DefaultApiFp(configuration)
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        appControllerGetHello(options?: any): AxiosPromise<void> {
-            return localVarFp.appControllerGetHello(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {AddToCartDto} addToCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: any): AxiosPromise<CartDto> {
-            return localVarFp.cartControllerAddItemToCart(id, addToCartDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerCheckout(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.cartControllerCheckout(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerGetCartForUser(id: string, options?: any): AxiosPromise<CartDto> {
-            return localVarFp.cartControllerGetCartForUser(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {RemoveFromCartDto} removeFromCartDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: any): AxiosPromise<CartDto> {
-            return localVarFp.cartControllerRemoveItemFromCart(id, removeFromCartDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {CreateCustomerDto} createCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerControllerCreateCustomer(createCustomerDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerDeleteCustomer(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.customerControllerDeleteCustomer(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerGetCustomer(id: string, options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerControllerGetCustomer(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerGetCustomers(options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerControllerGetCustomers(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateCustomerDto} updateCustomerDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {CreateExperienceDto} createExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
-            return localVarFp.experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerDeleteExperience(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.experienceControllerDeleteExperience(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerGetExperienceById(id: string, options?: any): AxiosPromise<DeepExperienceDto> {
-            return localVarFp.experienceControllerGetExperienceById(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerGetExperiences(options?: any): AxiosPromise<ExperienceDto> {
-            return localVarFp.experienceControllerGetExperiences(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateExperienceDto} updateExperienceDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
-            return localVarFp.experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {CreateMerchantDto} createMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: any): AxiosPromise<MerchantDto> {
-            return localVarFp.merchantControllerCreateMerchant(createMerchantDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerDeleteMerchant(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.merchantControllerDeleteMerchant(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerGetMerchant(id: string, options?: any): AxiosPromise<MerchantDto> {
-            return localVarFp.merchantControllerGetMerchant(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerGetMerchants(options?: any): AxiosPromise<Array<MerchantDto>> {
-            return localVarFp.merchantControllerGetMerchants(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateMerchantDto} updateMerchantDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: any): AxiosPromise<MerchantDto> {
-            return localVarFp.merchantControllerUpdateMerchant(id, updateMerchantDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerDeleteOrder(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.orderControllerDeleteOrder(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrder(id: string, options?: any): AxiosPromise<OrderDto> {
-            return localVarFp.orderControllerGetOrder(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrders(options?: any): AxiosPromise<Array<OrderDto>> {
-            return localVarFp.orderControllerGetOrders(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        orderControllerGetOrdersByUser(id: string, options?: any): AxiosPromise<Array<OrderDto>> {
-            return localVarFp.orderControllerGetOrdersByUser(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {CreateTicketDto} createTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: any): AxiosPromise<TicketDto> {
-            return localVarFp.ticketControllerCreateTicket(createTicketDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerDeleteTicket(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.ticketControllerDeleteTicket(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTicketById(id: string, options?: any): AxiosPromise<DeepTicketDto> {
-            return localVarFp.ticketControllerGetTicketById(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTickets(options?: any): AxiosPromise<Array<TicketDto>> {
-            return localVarFp.ticketControllerGetTickets(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTicketsForExperience(id: string, options?: any): AxiosPromise<Array<TicketDto>> {
-            return localVarFp.ticketControllerGetTicketsForExperience(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @param {string} id
-         * @param {UpdateTicketDto} updateTicketDto
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: any): AxiosPromise<TicketDto> {
-            return localVarFp.ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(axios, basePath));
-        },
-    };
+export const DefaultApiFactory = function(configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+  const localVarFp = DefaultApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    appControllerGetHello(options?: any): AxiosPromise<void> {
+      return localVarFp.appControllerGetHello(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {AddToCartDto} addToCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: any): AxiosPromise<CartDto> {
+      return localVarFp.cartControllerAddItemToCart(id, addToCartDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerCheckout(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.cartControllerCheckout(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerGetCartForUser(id: string, options?: any): AxiosPromise<CartDto> {
+      return localVarFp.cartControllerGetCartForUser(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {RemoveFromCartDto} removeFromCartDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: any): AxiosPromise<CartDto> {
+      return localVarFp.cartControllerRemoveItemFromCart(id, removeFromCartDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateCustomerDto} createCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
+      return localVarFp.customerControllerCreateCustomer(createCustomerDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerDeleteCustomer(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.customerControllerDeleteCustomer(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerGetCustomer(id: string, options?: any): AxiosPromise<CustomerDto> {
+      return localVarFp.customerControllerGetCustomer(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerGetCustomers(options?: any): AxiosPromise<CustomerDto> {
+      return localVarFp.customerControllerGetCustomers(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateCustomerDto} updateCustomerDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
+      return localVarFp.customerControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateExperienceDto} createExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
+      return localVarFp.experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerDeleteExperience(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.experienceControllerDeleteExperience(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerGetExperienceById(id: string, options?: any): AxiosPromise<DeepExperienceDto> {
+      return localVarFp.experienceControllerGetExperienceById(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerGetExperiences(options?: any): AxiosPromise<Array<ExperienceDto>> {
+      return localVarFp.experienceControllerGetExperiences(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateExperienceDto} updateExperienceDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
+      return localVarFp.experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateMerchantDto} createMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: any): AxiosPromise<MerchantDto> {
+      return localVarFp.merchantControllerCreateMerchant(createMerchantDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerDeleteMerchant(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.merchantControllerDeleteMerchant(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerGetMerchant(id: string, options?: any): AxiosPromise<MerchantDto> {
+      return localVarFp.merchantControllerGetMerchant(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerGetMerchants(options?: any): AxiosPromise<Array<MerchantDto>> {
+      return localVarFp.merchantControllerGetMerchants(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateMerchantDto} updateMerchantDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: any): AxiosPromise<MerchantDto> {
+      return localVarFp.merchantControllerUpdateMerchant(id, updateMerchantDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerDeleteOrder(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.orderControllerDeleteOrder(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrder(id: string, options?: any): AxiosPromise<OrderDto> {
+      return localVarFp.orderControllerGetOrder(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrders(options?: any): AxiosPromise<Array<OrderDto>> {
+      return localVarFp.orderControllerGetOrders(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    orderControllerGetOrdersByUser(id: string, options?: any): AxiosPromise<Array<OrderDto>> {
+      return localVarFp.orderControllerGetOrdersByUser(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateTicketDto} createTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: any): AxiosPromise<TicketDto> {
+      return localVarFp.ticketControllerCreateTicket(createTicketDto, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerDeleteTicket(id: string, options?: any): AxiosPromise<void> {
+      return localVarFp.ticketControllerDeleteTicket(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTicketById(id: string, options?: any): AxiosPromise<DeepTicketDto> {
+      return localVarFp.ticketControllerGetTicketById(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTickets(options?: any): AxiosPromise<Array<TicketDto>> {
+      return localVarFp.ticketControllerGetTickets(options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerGetTicketsForExperience(id: string, options?: any): AxiosPromise<Array<TicketDto>> {
+      return localVarFp.ticketControllerGetTicketsForExperience(id, options).then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id
+     * @param {UpdateTicketDto} updateTicketDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: any): AxiosPromise<TicketDto> {
+      return localVarFp.ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(axios, basePath));
+    },
+  };
 };
 
 /**
@@ -2416,335 +2416,335 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public appControllerGetHello(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).appControllerGetHello(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public appControllerGetHello(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).appControllerGetHello(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {AddToCartDto} addToCartDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).cartControllerAddItemToCart(id, addToCartDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {AddToCartDto} addToCartDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public cartControllerAddItemToCart(id: string, addToCartDto: AddToCartDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).cartControllerAddItemToCart(id, addToCartDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public cartControllerCheckout(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).cartControllerCheckout(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public cartControllerCheckout(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).cartControllerCheckout(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public cartControllerGetCartForUser(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).cartControllerGetCartForUser(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public cartControllerGetCartForUser(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).cartControllerGetCartForUser(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {RemoveFromCartDto} removeFromCartDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).cartControllerRemoveItemFromCart(id, removeFromCartDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {RemoveFromCartDto} removeFromCartDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public cartControllerRemoveItemFromCart(id: string, removeFromCartDto: RemoveFromCartDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).cartControllerRemoveItemFromCart(id, removeFromCartDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {CreateCustomerDto} createCustomerDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerControllerCreateCustomer(createCustomerDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {CreateCustomerDto} createCustomerDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public customerControllerCreateCustomer(createCustomerDto: CreateCustomerDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).customerControllerCreateCustomer(createCustomerDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public customerControllerDeleteCustomer(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerControllerDeleteCustomer(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public customerControllerDeleteCustomer(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).customerControllerDeleteCustomer(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public customerControllerGetCustomer(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerControllerGetCustomer(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public customerControllerGetCustomer(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).customerControllerGetCustomer(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public customerControllerGetCustomers(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerControllerGetCustomers(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public customerControllerGetCustomers(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).customerControllerGetCustomers(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {UpdateCustomerDto} updateCustomerDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {UpdateCustomerDto} updateCustomerDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public customerControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).customerControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {CreateExperienceDto} createExperienceDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {CreateExperienceDto} createExperienceDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerDeleteExperience(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).experienceControllerDeleteExperience(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerGetExperienceById(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerGetExperienceById(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public experienceControllerGetExperienceById(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).experienceControllerGetExperienceById(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerGetExperiences(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerGetExperiences(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public experienceControllerGetExperiences(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).experienceControllerGetExperiences(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {UpdateExperienceDto} updateExperienceDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {UpdateExperienceDto} updateExperienceDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {CreateMerchantDto} createMerchantDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).merchantControllerCreateMerchant(createMerchantDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {CreateMerchantDto} createMerchantDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public merchantControllerCreateMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).merchantControllerCreateMerchant(createMerchantDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public merchantControllerDeleteMerchant(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).merchantControllerDeleteMerchant(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public merchantControllerDeleteMerchant(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).merchantControllerDeleteMerchant(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public merchantControllerGetMerchant(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).merchantControllerGetMerchant(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public merchantControllerGetMerchant(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).merchantControllerGetMerchant(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public merchantControllerGetMerchants(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).merchantControllerGetMerchants(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public merchantControllerGetMerchants(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).merchantControllerGetMerchants(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {UpdateMerchantDto} updateMerchantDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).merchantControllerUpdateMerchant(id, updateMerchantDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {UpdateMerchantDto} updateMerchantDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public merchantControllerUpdateMerchant(id: string, updateMerchantDto: UpdateMerchantDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).merchantControllerUpdateMerchant(id, updateMerchantDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public orderControllerDeleteOrder(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).orderControllerDeleteOrder(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public orderControllerDeleteOrder(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).orderControllerDeleteOrder(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public orderControllerGetOrder(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).orderControllerGetOrder(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public orderControllerGetOrder(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).orderControllerGetOrder(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public orderControllerGetOrders(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).orderControllerGetOrders(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public orderControllerGetOrders(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).orderControllerGetOrders(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).orderControllerGetOrdersByUser(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).orderControllerGetOrdersByUser(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {CreateTicketDto} createTicketDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerCreateTicket(createTicketDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {CreateTicketDto} createTicketDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerCreateTicket(createTicketDto, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerDeleteTicket(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerDeleteTicket(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerGetTicketById(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerGetTicketById(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerGetTicketById(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerGetTicketById(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerGetTickets(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerGetTickets(options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerGetTickets(options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerGetTickets(options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerGetTicketsForExperience(id, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerGetTicketsForExperience(id, options).then((request) => request(this.axios, this.basePath));
+  }
 
-    /**
-     *
-     * @param {string} id
-     * @param {UpdateTicketDto} updateTicketDto
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(this.axios, this.basePath));
-    }
+  /**
+   *
+   * @param {string} id
+   * @param {UpdateTicketDto} updateTicketDto
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig) {
+    return DefaultApiFp(this.configuration).ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(this.axios, this.basePath));
+  }
 }
 
 
