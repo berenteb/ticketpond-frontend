@@ -3,12 +3,20 @@
 import { Button } from '@/components/button/Button';
 import { CartTicketGroup } from '@/components/cart-item-card/CartTicketGroup';
 import { useCart } from '@/hooks/useCart';
+import { useCheckout } from '@/hooks/useCheckout';
 import { groupItemsByExperience } from '@/utils/cart.utils';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function CartPage() {
   const { data, mutate } = useCart();
+  const checkout = useCheckout();
+  const router = useRouter();
   const groupedItems = groupItemsByExperience(data?.items ?? []);
+
+  const onCheckout = async () => {
+    checkout.trigger().then((url) => router.push(url));
+  };
   return (
     <main>
       <h1>Kosár</h1>
@@ -27,6 +35,7 @@ export default function CartPage() {
           </li>
         ))}
       </ul>
+      {groupedItems.length > 0 && <Button onClick={onCheckout}>Tovább a fizetéshez</Button>}
     </main>
   );
 }

@@ -16,7 +16,7 @@ export function TicketCard({ ticket, className, ...props }: TicketCardProps) {
         <p className='text-gray-500'>{ticket.description}</p>
       </div>
       <div className='flex gap-5 items-center'>
-        <p className='font-bold text-lg'>{ticket.price} Ft</p>
+        <p className='font-bold text-lg'>{ticket.price.toLocaleString()} Ft</p>
         <AddToCartButton ticketId={ticket.id} />
       </div>
     </Card>

@@ -365,6 +365,98 @@ export interface DeepExperienceDto {
 /**
  * 
  * @export
+ * @interface DeepOrderDto
+ */
+export interface DeepOrderDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'customerId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {Array<DeepOrderItemDto>}
+     * @memberof DeepOrderDto
+     */
+    'items': Array<DeepOrderItemDto>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'paymentStatus': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'orderStatus': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderDto
+     */
+    'serialNumber': string;
+}
+/**
+ * 
+ * @export
+ * @interface DeepOrderItemDto
+ */
+export interface DeepOrderItemDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderItemDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderItemDto
+     */
+    'orderId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeepOrderItemDto
+     */
+    'price': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderItemDto
+     */
+    'serialNumber': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeepOrderItemDto
+     */
+    'ticketId': string;
+    /**
+     * 
+     * @type {DeepTicketDto}
+     * @memberof DeepOrderItemDto
+     */
+    'ticket': DeepTicketDto;
+}
+/**
+ * 
+ * @export
  * @interface DeepTicketDto
  */
 export interface DeepTicketDto {
@@ -551,6 +643,12 @@ export interface OrderDto {
      * @memberof OrderDto
      */
     'orderStatus': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderDto
+     */
+    'serialNumber': string;
 }
 /**
  * 
@@ -926,6 +1024,35 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('cartControllerCheckout', 'id', id)
             const localVarPath = `/cart/{id}/checkout`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cartControllerCheckoutForMe: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/cart/me/checkout`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1752,15 +1879,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orderControllerGetOrdersByUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('orderControllerGetOrdersByUser', 'id', id)
-            const localVarPath = `/order/user/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        orderControllerGetOrdersByUser: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/order/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2040,6 +2163,15 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        async cartControllerCheckoutForMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerCheckoutForMe(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         async cartControllerGetCartForMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CartDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.cartControllerGetCartForMe(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -2260,7 +2392,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async orderControllerGetOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrderDto>> {
+        async orderControllerGetOrder(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepOrderDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrder(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2275,12 +2407,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrdersByUser(id, options);
+        async orderControllerGetOrdersByUser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OrderDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetOrdersByUser(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2388,6 +2519,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         cartControllerCheckout(id: string, options?: any): AxiosPromise<void> {
             return localVarFp.cartControllerCheckout(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cartControllerCheckoutForMe(options?: any): AxiosPromise<string> {
+            return localVarFp.cartControllerCheckoutForMe(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2592,7 +2731,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orderControllerGetOrder(id: string, options?: any): AxiosPromise<OrderDto> {
+        orderControllerGetOrder(id: string, options?: any): AxiosPromise<DeepOrderDto> {
             return localVarFp.orderControllerGetOrder(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2605,12 +2744,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orderControllerGetOrdersByUser(id: string, options?: any): AxiosPromise<Array<OrderDto>> {
-            return localVarFp.orderControllerGetOrdersByUser(id, options).then((request) => request(axios, basePath));
+        orderControllerGetOrdersByUser(options?: any): AxiosPromise<Array<OrderDto>> {
+            return localVarFp.orderControllerGetOrdersByUser(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2718,6 +2856,16 @@ export class DefaultApi extends BaseAPI {
      */
     public cartControllerCheckout(id: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).cartControllerCheckout(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public cartControllerCheckoutForMe(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).cartControllerCheckoutForMe(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2984,13 +3132,12 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public orderControllerGetOrdersByUser(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).orderControllerGetOrdersByUser(id, options).then((request) => request(this.axios, this.basePath));
+    public orderControllerGetOrdersByUser(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).orderControllerGetOrdersByUser(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
