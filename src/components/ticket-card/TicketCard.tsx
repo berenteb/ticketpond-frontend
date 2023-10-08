@@ -1,9 +1,8 @@
 import { TicketDto } from '@/api';
-import { Button } from '@/components/button/Button';
+import { AddToCartButton } from '@/components/cart-control-button/AddToCartButton';
 import { Card } from '@/components/card/Card';
 import { clsx } from 'clsx';
 import { HTMLAttributes } from 'react';
-import { TbShoppingCart } from 'react-icons/tb';
 
 interface TicketCardProps extends HTMLAttributes<HTMLDivElement> {
   ticket: TicketDto;
@@ -18,7 +17,7 @@ export function TicketCard({ ticket, className, ...props }: TicketCardProps) {
       </div>
       <div className='flex gap-5 items-center'>
         <p className='font-bold text-lg'>{ticket.price} Ft</p>
-        <Button iconBefore={TbShoppingCart} />
+        <AddToCartButton ticketId={ticket.id} />
       </div>
     </Card>
   );

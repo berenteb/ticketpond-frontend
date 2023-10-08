@@ -1,5 +1,6 @@
 'use client';
 
+import { Cart } from '@/components/cart/Cart';
 import { AuthMenu } from '@/components/navbar/AuthMenu';
 import { TextLink } from '@/components/text-Link/TextLink';
 import { usePathname } from 'next/navigation';
@@ -21,6 +22,7 @@ export function Navbar() {
             Élmények
           </TextLink>
           <AuthMenu />
+          <Cart />
         </div>
       </div>
     </nav>

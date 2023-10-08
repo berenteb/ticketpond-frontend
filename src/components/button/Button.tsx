@@ -1,12 +1,14 @@
 import { clsx } from 'clsx';
 import React from 'react';
 import { IconType } from 'react-icons';
+type Size = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'subtle';
   iconBefore?: IconType;
   iconAfter?: IconType;
   isLoading?: boolean;
+  size?: Size;
 }
 
 export function Button({
@@ -17,11 +19,13 @@ export function Button({
   disabled,
   className,
   children,
+  size = 'md',
   ...props
 }: ButtonProps) {
   const IconBefore = iconBefore;
   const IconAfter = iconAfter;
   const isIconOnly = !children && (IconBefore || IconAfter);
+  const iconSize = iconSizes[size];
   return (
     <button
       className={clsx(
@@ -37,9 +41,15 @@ export function Button({
       disabled={isLoading || disabled}
       {...props}
     >
-      {IconBefore && <IconBefore size={30} />}
+      {IconBefore && <IconBefore size={iconSize} />}
       {children}
-      {IconAfter && <IconAfter size={30} />}
+      {IconAfter && <IconAfter size={iconSize} />}
     </button>
   );
 }
+
+const iconSizes: Record<Size, number> = {
+  sm: 20,
+  md: 30,
+  lg: 40,
+};
