@@ -1,8 +1,8 @@
 import { ExperienceCard } from '@/components/experience-card/ExperienceCard';
-import { apiService } from '@/services/api.service';
+import { publicApiService } from '@/services/publicApiService';
 
 export default async function Home() {
-  const experiences = await apiService.experienceControllerGetExperiences();
+  const experiences = await publicApiService.experienceControllerGetExperiences();
   return (
     <main>
       <h1 className='text-5xl font-bold text-slate-300'>A következő élményed itt vár.</h1>

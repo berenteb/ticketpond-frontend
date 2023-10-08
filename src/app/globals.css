@@ -17,3 +17,27 @@ main > *:not(:first-child) {
 .body-paragraph {
   @apply text-slate-500;
 }
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+form {
+  @apply flex flex-col;
+}
+
+label {
+  @apply text-slate-500;
+}
+
+input {
+  @apply w-full border border-slate-200 rounded-md px-3 py-2;
+}
+
+input.invalid {
+  @apply border-red-500;
+}
+
+div.inputGroup {
+  @apply flex flex-col mt-5;
+}

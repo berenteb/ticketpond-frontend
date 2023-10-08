@@ -1,13 +1,24 @@
 import { clsx } from 'clsx';
+import React from 'react';
 import { IconType } from 'react-icons';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'subtle';
   iconBefore?: IconType;
   iconAfter?: IconType;
+  isLoading?: boolean;
 }
 
-export function Button({ variant = 'primary', iconAfter, iconBefore, className, children, ...props }: ButtonProps) {
+export function Button({
+  variant = 'primary',
+  iconAfter,
+  iconBefore,
+  isLoading,
+  disabled,
+  className,
+  children,
+  ...props
+}: ButtonProps) {
   const IconBefore = iconBefore;
   const IconAfter = iconAfter;
   const isIconOnly = !children && (IconBefore || IconAfter);
@@ -23,6 +34,7 @@ export function Button({ variant = 'primary', iconAfter, iconBefore, className, 
         },
         className
       )}
+      disabled={isLoading || disabled}
       {...props}
     >
       {IconBefore && <IconBefore size={30} />}

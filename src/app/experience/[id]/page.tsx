@@ -1,6 +1,6 @@
 import { TextLink } from '@/components/text-Link/TextLink';
 import { TicketCard } from '@/components/ticket-card/TicketCard';
-import { apiService } from '@/services/api.service';
+import { publicApiService } from '@/services/publicApiService';
 import Image from 'next/image';
 import { cache } from 'react';
 
@@ -16,7 +16,7 @@ export default async function ExperienceDetailsPage({ params }: { params: { id: 
         width={1440}
         height={400}
       />
-      <h1 className='text-5xl font-bold'>{experience.name}</h1>
+      <h1 className='text-5xl'>{experience.name}</h1>
       <p className='body-paragraph'>{experience.description}</p>
       {experience.tickets.map((ticket) => (
         <TicketCard ticket={ticket} key={ticket.id} />
@@ -29,6 +29,6 @@ export default async function ExperienceDetailsPage({ params }: { params: { id: 
 }
 
 const getExperienceById = cache(async (id: string) => {
-  const res = await apiService.experienceControllerGetExperienceById(id);
+  const res = await publicApiService.experienceControllerGetExperienceById(id);
   return res.data;
 });

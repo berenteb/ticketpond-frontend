@@ -1,5 +1,5 @@
 import { TextLink } from '@/components/text-Link/TextLink';
-import { apiService } from '@/services/api.service';
+import { publicApiService } from '@/services/publicApiService';
 import { cache } from 'react';
 import { TbBuilding, TbMail, TbPhone } from 'react-icons/tb';
 
@@ -29,6 +29,6 @@ export default async function MerchantDetailsPage({ params }: { params: { id: st
 }
 
 const getMerchantById = cache(async (id: string) => {
-  const res = await apiService.merchantControllerGetMerchant(id);
+  const res = await publicApiService.merchantControllerGetMerchant(id);
   return res.data;
 });
