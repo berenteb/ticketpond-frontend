@@ -21,7 +21,7 @@ const schema: ObjectSchema<UpdateCustomerDto> = yup.object().shape({
   address: yup.string().required('A lakcím megadása kötelező!'),
 });
 
-export default withPageAuthRequired(function CreateProfilePage() {
+export default withPageAuthRequired(function AdminCustomerPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
