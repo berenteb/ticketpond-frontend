@@ -26,6 +26,9 @@ export function Navbar() {
           <TextLink className='text-lg' href='/experiences'>
             Élmények
           </TextLink>
+          <TextLink className='text-lg' href='/admin'>
+            Admin
+          </TextLink>
           <AuthMenu />
           <Cart />
         </div>
