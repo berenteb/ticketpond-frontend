@@ -2306,7 +2306,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async customerControllerGetCustomers(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+        async customerControllerGetCustomers(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CustomerDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetCustomers(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2679,7 +2679,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerControllerGetCustomers(options?: any): AxiosPromise<CustomerDto> {
+        customerControllerGetCustomers(options?: any): AxiosPromise<Array<CustomerDto>> {
             return localVarFp.customerControllerGetCustomers(options).then((request) => request(axios, basePath));
         },
         /**
