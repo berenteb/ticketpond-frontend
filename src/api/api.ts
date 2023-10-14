@@ -1683,6 +1683,35 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        merchantControllerGetMe: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/merchant/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1737,6 +1766,41 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateMerchantDto} createMerchantDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        merchantControllerRegisterMerchant: async (createMerchantDto: CreateMerchantDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createMerchantDto' is not null or undefined
+            assertParamExists('merchantControllerRegisterMerchant', 'createMerchantDto', createMerchantDto)
+            const localVarPath = `/merchant/register`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createMerchantDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2348,6 +2412,15 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async merchantControllerGetMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMe(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2363,6 +2436,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async merchantControllerGetMerchants(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MerchantDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerGetMerchants(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {CreateMerchantDto} createMerchantDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async merchantControllerRegisterMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MerchantDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.merchantControllerRegisterMerchant(createMerchantDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2691,6 +2774,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        merchantControllerGetMe(options?: any): AxiosPromise<MerchantDto> {
+            return localVarFp.merchantControllerGetMe(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2705,6 +2796,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         merchantControllerGetMerchants(options?: any): AxiosPromise<Array<MerchantDto>> {
             return localVarFp.merchantControllerGetMerchants(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {CreateMerchantDto} createMerchantDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        merchantControllerRegisterMerchant(createMerchantDto: CreateMerchantDto, options?: any): AxiosPromise<MerchantDto> {
+            return localVarFp.merchantControllerRegisterMerchant(createMerchantDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3067,6 +3167,16 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public merchantControllerGetMe(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).merchantControllerGetMe(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3084,6 +3194,17 @@ export class DefaultApi extends BaseAPI {
      */
     public merchantControllerGetMerchants(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).merchantControllerGetMerchants(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CreateMerchantDto} createMerchantDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public merchantControllerRegisterMerchant(createMerchantDto: CreateMerchantDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).merchantControllerRegisterMerchant(createMerchantDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

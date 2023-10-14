@@ -1,12 +1,11 @@
 'use client';
 
 import { Button } from '@/components/button/Button';
-import { Card } from '@/components/card/Card';
+import { DataCard } from '@/components/data-card/DataCard';
 import { useMe } from '@/hooks/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TbBuilding, TbMail, TbPhone } from 'react-icons/tb';
 
 export default withPageAuthRequired(function ProfilePage() {
   const authUser = useUser();
@@ -24,20 +23,7 @@ export default withPageAuthRequired(function ProfilePage() {
           {me.data.lastName} {me.data.firstName}
         </h1>
       </div>
-      <Card className='flex flex-col gap-5 p-5 w-fit'>
-        <div className='flex gap-1'>
-          <TbMail size={20} />
-          <p>{me.data.email}</p>
-        </div>
-        <div className='flex gap-1'>
-          <TbPhone size={20} />
-          <p>{me.data.phone}</p>
-        </div>
-        <div className='flex gap-1'>
-          <TbBuilding size={20} />
-          <p>{me.data.address}</p>
-        </div>
-      </Card>
+      <DataCard phone={me.data.phone} email={me.data.email} address={me.data.address} />
       <Link href={'/api/auth/logout'}>
         <Button variant='subtle'>Kijelentkezés</Button>
       </Link>

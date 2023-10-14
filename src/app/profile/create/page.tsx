@@ -4,7 +4,8 @@ import { CreateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/input/Input';
 import { useCreateCustomer } from '@/hooks/useCreateCustomer';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useMe } from '@/hooks/useMe';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -20,8 +21,9 @@ const schema: ObjectSchema<CreateCustomerDto> = yup.object().shape({
   address: yup.string().required('A lakcím megadása kötelező!'),
 });
 
-export default function CreateProfilePage() {
+export default withPageAuthRequired(function CreateProfilePage() {
   const createCustomer = useCreateCustomer();
+  const me = useMe();
   const user = useUser();
   const router = useRouter();
   const {
@@ -31,7 +33,7 @@ export default function CreateProfilePage() {
     formState: { errors },
   } = useForm<CreateCustomerDto>({ resolver: yupResolver(schema) });
   const onSubmit = (data: CreateCustomerDto) => {
-    createCustomer.trigger(data);
+    createCustomer.trigger(data).then(() => router.push('/profile'));
   };
   useEffect(() => {
     if (!user.isLoading) {
@@ -42,11 +44,7 @@ export default function CreateProfilePage() {
       });
     }
   }, [user.user]);
-  useEffect(() => {
-    if (createCustomer.data) {
-      router.push('/profile');
-    }
-  }, [createCustomer.data]);
+  if (me.data) router.push('/profile');
   return (
     <main>
       <h1>Fiók létrehozása</h1>
@@ -68,4 +66,4 @@ export default function CreateProfilePage() {
       </form>
     </main>
   );
-}
+});
