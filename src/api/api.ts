@@ -171,12 +171,6 @@ export interface CreateExperienceDto {
      * @memberof CreateExperienceDto
      */
     'bannerImage': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateExperienceDto
-     */
-    'merchantId': string;
 }
 /**
  * 
@@ -1450,10 +1444,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        experienceControllerCreateExperience: async (createExperienceDto: CreateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        experienceAdminControllerCreateExperience: async (createExperienceDto: CreateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createExperienceDto' is not null or undefined
-            assertParamExists('experienceControllerCreateExperience', 'createExperienceDto', createExperienceDto)
-            const localVarPath = `/experience`;
+            assertParamExists('experienceAdminControllerCreateExperience', 'createExperienceDto', createExperienceDto)
+            const localVarPath = `/admin/experience`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1485,10 +1479,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        experienceControllerDeleteExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        experienceAdminControllerDeleteExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('experienceControllerDeleteExperience', 'id', id)
-            const localVarPath = `/experience/{id}`
+            assertParamExists('experienceAdminControllerDeleteExperience', 'id', id)
+            const localVarPath = `/admin/experience/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1506,6 +1500,107 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerGetExperienceById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('experienceAdminControllerGetExperienceById', 'id', id)
+            const localVarPath = `/admin/experience/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerGetExperiences: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/admin/experience`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateExperienceDto} updateExperienceDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerUpdateExperience: async (id: string, updateExperienceDto: UpdateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('experienceAdminControllerUpdateExperience', 'id', id)
+            // verify required parameter 'updateExperienceDto' is not null or undefined
+            assertParamExists('experienceAdminControllerUpdateExperience', 'updateExperienceDto', updateExperienceDto)
+            const localVarPath = `/admin/experience/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateExperienceDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1568,45 +1663,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateExperienceDto} updateExperienceDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerUpdateExperience: async (id: string, updateExperienceDto: UpdateExperienceDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('experienceControllerUpdateExperience', 'id', id)
-            // verify required parameter 'updateExperienceDto' is not null or undefined
-            assertParamExists('experienceControllerUpdateExperience', 'updateExperienceDto', updateExperienceDto)
-            const localVarPath = `/experience/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateExperienceDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2346,8 +2402,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerCreateExperience(createExperienceDto, options);
+        async experienceAdminControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceAdminControllerCreateExperience(createExperienceDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2356,8 +2412,38 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerDeleteExperience(id, options);
+        async experienceAdminControllerDeleteExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceAdminControllerDeleteExperience(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async experienceAdminControllerGetExperienceById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceAdminControllerGetExperienceById(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async experienceAdminControllerGetExperiences(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ExperienceDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceAdminControllerGetExperiences(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateExperienceDto} updateExperienceDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async experienceAdminControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceAdminControllerUpdateExperience(id, updateExperienceDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2377,17 +2463,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async experienceControllerGetExperiences(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ExperienceDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerGetExperiences(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateExperienceDto} updateExperienceDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperienceDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceControllerUpdateExperience(id, updateExperienceDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2715,8 +2790,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
-            return localVarFp.experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(axios, basePath));
+        experienceAdminControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
+            return localVarFp.experienceAdminControllerCreateExperience(createExperienceDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2724,8 +2799,35 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        experienceControllerDeleteExperience(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.experienceControllerDeleteExperience(id, options).then((request) => request(axios, basePath));
+        experienceAdminControllerDeleteExperience(id: string, options?: any): AxiosPromise<void> {
+            return localVarFp.experienceAdminControllerDeleteExperience(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerGetExperienceById(id: string, options?: any): AxiosPromise<ExperienceDto> {
+            return localVarFp.experienceAdminControllerGetExperienceById(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerGetExperiences(options?: any): AxiosPromise<Array<ExperienceDto>> {
+            return localVarFp.experienceAdminControllerGetExperiences(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateExperienceDto} updateExperienceDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceAdminControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
+            return localVarFp.experienceAdminControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2743,16 +2845,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         experienceControllerGetExperiences(options?: any): AxiosPromise<Array<ExperienceDto>> {
             return localVarFp.experienceControllerGetExperiences(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateExperienceDto} updateExperienceDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
-            return localVarFp.experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3095,8 +3187,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public experienceControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerCreateExperience(createExperienceDto, options).then((request) => request(this.axios, this.basePath));
+    public experienceAdminControllerCreateExperience(createExperienceDto: CreateExperienceDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceAdminControllerCreateExperience(createExperienceDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3106,8 +3198,41 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public experienceControllerDeleteExperience(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerDeleteExperience(id, options).then((request) => request(this.axios, this.basePath));
+    public experienceAdminControllerDeleteExperience(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceAdminControllerDeleteExperience(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public experienceAdminControllerGetExperienceById(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceAdminControllerGetExperienceById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public experienceAdminControllerGetExperiences(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceAdminControllerGetExperiences(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UpdateExperienceDto} updateExperienceDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public experienceAdminControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceAdminControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3129,18 +3254,6 @@ export class DefaultApi extends BaseAPI {
      */
     public experienceControllerGetExperiences(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).experienceControllerGetExperiences(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {UpdateExperienceDto} updateExperienceDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public experienceControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).experienceControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
