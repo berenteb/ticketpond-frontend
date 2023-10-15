@@ -14,7 +14,7 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
 
-export default withPageAuthRequired(function ProfileOrderPage() {
+export default withPageAuthRequired(function AdminOrderPage() {
   const params = useParams();
   const { data } = useOrder(Array.isArray(params.id) ? params.id[0] : params.id);
   const groupedItems = useMemo(() => {
