@@ -4,7 +4,7 @@ import useSWRMutation from 'swr/mutation';
 
 export function useUpdateExperience(id: string) {
   return useSWRMutation(['updateExperience', id], async (_: string[], { arg }: { arg: UpdateExperienceDto }) => {
-    const response = await authenticatedApiService.experienceControllerUpdateExperience(id, arg);
+    const response = await authenticatedApiService.experienceAdminControllerUpdateExperience(id, arg);
     return response.data;
   });
 }
