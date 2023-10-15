@@ -28,18 +28,23 @@ export default withPageAuthRequired(function AdminTicketPage() {
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const ticket = useTicket(id);
   const updateTicket = useUpdateTicket(id);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<UpdateTicketDto>({ resolver: yupResolver(schema) });
+
   const onSubmit = (data: UpdateTicketDto) => {
     if (data.validFrom) data.validFrom = new Date(data.validFrom).toISOString();
     if (data.validTo) data.validTo = new Date(data.validTo).toISOString();
     const { name, description, price, validFrom, validTo } = data;
-    updateTicket.trigger({ name, description, price, validFrom, validTo }).then(() => router.push('/admin/ticket'));
+    updateTicket
+      .trigger({ name, description, price, validFrom, validTo })
+      .then(() => router.push('/merchant/admin/ticket'));
   };
+
   useEffect(() => {
     if (!ticket.data) return;
     reset({

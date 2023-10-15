@@ -19,7 +19,7 @@ export default withPageAuthRequired(function AdminTicketList() {
       <ul className='flex flex-col gap-5'>
         {data.map((ticket) => (
           <li key={ticket.id}>
-            <TicketListItem ticket={ticket} />
+            <TicketListItem ticket={ticket} href={`/admin/ticket/${ticket.id}`} />
           </li>
         ))}
       </ul>

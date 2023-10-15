@@ -2,7 +2,7 @@
 
 import { CreateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
-import { Input } from '@/components/input/Input';
+import { Input } from '@/components/form/input/Input';
 import { useCreateCustomer } from '@/hooks/useCreateCustomer';
 import { useMe } from '@/hooks/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';

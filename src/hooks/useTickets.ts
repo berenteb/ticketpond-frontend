@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 export function useTickets() {
   return useSWR('tickets', async () => {
-    const response = await authenticatedApiService.ticketControllerGetTickets();
+    const response = await authenticatedApiService.ticketAdminControllerGetTickets();
     return response.data;
   });
 }

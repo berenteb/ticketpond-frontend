@@ -2,7 +2,7 @@
 
 import { UpdateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
-import { Input } from '@/components/input/Input';
+import { Input } from '@/components/form/input/Input';
 import { useCustomer } from '@/hooks/useCustomer';
 import { useUpdateCustomer } from '@/hooks/useUpdateCustomer';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';

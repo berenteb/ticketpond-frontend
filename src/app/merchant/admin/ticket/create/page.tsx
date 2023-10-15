@@ -1,57 +1,48 @@
 'use client';
 
-import { UpdateTicketDto } from '@/api';
+import { CreateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useTicket } from '@/hooks/useTicket';
-import { useUpdateTicket } from '@/hooks/useUpdateTicket';
-import { formatDateHu } from '@/utils/common.utils';
+import { Select } from '@/components/form/select/Select';
+import { useCreateTicket } from '@/hooks/useCreateTicket';
+import { useExperiencesForMerchant } from '@/hooks/useExperiencesForMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { ObjectSchema } from 'yup';
 
-const schema: ObjectSchema<UpdateTicketDto> = yup.object().shape({
+const schema: ObjectSchema<CreateTicketDto> = yup.object().shape({
   name: yup.string().required('A név megadása kötelező!'),
   description: yup.string().required('A leírás megadása kötelező!'),
   price: yup.number().required('Az ár megadása kötelező!'),
   validFrom: yup.string().required('A kezdő dátum megadása kötelező!'),
   validTo: yup.string().required('A befejező dátum megadása kötelező!'),
+  experienceId: yup.string().required('Az élmény megadása kötelező!'),
 });
 
-export default withPageAuthRequired(function AdminTicketPage() {
-  const params = useParams();
+export default withPageAuthRequired(function MerchantTicketCreatePage() {
   const router = useRouter();
-  const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const ticket = useTicket(id);
-  const updateTicket = useUpdateTicket(id);
+  const createTicket = useCreateTicket();
+  const experiences = useExperiencesForMerchant();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm<UpdateTicketDto>({ resolver: yupResolver(schema) });
-  const onSubmit = (data: UpdateTicketDto) => {
+  } = useForm<CreateTicketDto>({ resolver: yupResolver(schema) });
+
+  const onSubmit = (data: CreateTicketDto) => {
     if (data.validFrom) data.validFrom = new Date(data.validFrom).toISOString();
     if (data.validTo) data.validTo = new Date(data.validTo).toISOString();
-    const { name, description, price, validFrom, validTo } = data;
-    updateTicket.trigger({ name, description, price, validFrom, validTo }).then(() => router.push('/admin/ticket'));
+    const { name, description, price, validFrom, validTo, experienceId } = data;
+    createTicket
+      .trigger({ name, description, price, validFrom, validTo, experienceId })
+      .then(() => router.push('/merchant/admin/ticket'));
   };
-  useEffect(() => {
-    if (!ticket.data) return;
-    reset({
-      ...ticket.data,
-      validFrom: formatDateHu(new Date(ticket.data.validFrom)),
-      validTo: formatDateHu(new Date(ticket.data.validTo)),
-    });
-  }, [ticket.data]);
-
   return (
     <>
-      <h2>Jegy szerkesztése</h2>
+      <h2>Jegy létrehozása</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input label='Jegy neve' placeholder='Napi jegy' error={errors.name?.message} {...register('name')} />
         <Input
@@ -80,8 +71,15 @@ export default withPageAuthRequired(function AdminTicketPage() {
           error={errors.validTo?.message}
           {...register('validTo')}
         />
-        <Button className='mt-5' type='submit' isLoading={updateTicket.isMutating}>
-          Mentés
+        <Select label={'Élmény'} error={errors.experienceId?.message} {...register('experienceId')}>
+          {experiences.data?.map((experience) => (
+            <option key={experience.id} value={experience.id}>
+              {experience.name}
+            </option>
+          ))}
+        </Select>
+        <Button className='mt-5' type='submit' isLoading={createTicket.isMutating}>
+          Létrehozás
         </Button>
       </form>
     </>

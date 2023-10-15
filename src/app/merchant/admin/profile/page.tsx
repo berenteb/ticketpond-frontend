@@ -2,7 +2,7 @@
 
 import { UpdateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
-import { Input } from '@/components/input/Input';
+import { Input } from '@/components/form/input/Input';
 import { useMerchantMe } from '@/hooks/useMerchantMe';
 import { useUpdateMerchant } from '@/hooks/useUpdateMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';

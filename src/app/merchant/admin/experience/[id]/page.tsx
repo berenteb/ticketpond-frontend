@@ -2,7 +2,7 @@
 
 import { UpdateExperienceDto } from '@/api';
 import { Button } from '@/components/button/Button';
-import { Input } from '@/components/input/Input';
+import { Input } from '@/components/form/input/Input';
 import { useExperience } from '@/hooks/useExperience';
 import { useUpdateExperience } from '@/hooks/useUpdateExperience';
 import { formatDateHu } from '@/utils/common.utils';

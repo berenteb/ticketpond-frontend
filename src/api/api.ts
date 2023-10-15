@@ -2032,10 +2032,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerCreateTicket: async (createTicketDto: CreateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        ticketAdminControllerCreateTicket: async (createTicketDto: CreateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createTicketDto' is not null or undefined
-            assertParamExists('ticketControllerCreateTicket', 'createTicketDto', createTicketDto)
-            const localVarPath = `/ticket`;
+            assertParamExists('ticketAdminControllerCreateTicket', 'createTicketDto', createTicketDto)
+            const localVarPath = `/admin/ticket`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2067,10 +2067,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerDeleteTicket: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        ticketAdminControllerDeleteTicket: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerDeleteTicket', 'id', id)
-            const localVarPath = `/ticket/{id}`
+            assertParamExists('ticketAdminControllerDeleteTicket', 'id', id)
+            const localVarPath = `/admin/ticket/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2100,10 +2100,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerGetTicketById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        ticketAdminControllerGetTicketById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerGetTicketById', 'id', id)
-            const localVarPath = `/ticket/{id}`
+            assertParamExists('ticketAdminControllerGetTicketById', 'id', id)
+            const localVarPath = `/admin/ticket/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2132,8 +2132,142 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerGetTickets: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/ticket`;
+        ticketAdminControllerGetTickets: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/admin/ticket`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTicketsForExperience: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('ticketAdminControllerGetTicketsForExperience', 'id', id)
+            const localVarPath = `/admin/ticket/experience/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTicketsForMerchant: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/admin/ticket/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateTicketDto} updateTicketDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerUpdateTicket: async (id: string, updateTicketDto: UpdateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('ticketAdminControllerUpdateTicket', 'id', id)
+            // verify required parameter 'updateTicketDto' is not null or undefined
+            assertParamExists('ticketAdminControllerUpdateTicket', 'updateTicketDto', updateTicketDto)
+            const localVarPath = `/admin/ticket/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateTicketDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketControllerGetTicketById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('ticketControllerGetTicketById', 'id', id)
+            const localVarPath = `/ticket/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2183,45 +2317,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateTicketDto} updateTicketDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerUpdateTicket: async (id: string, updateTicketDto: UpdateTicketDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('ticketControllerUpdateTicket', 'id', id)
-            // verify required parameter 'updateTicketDto' is not null or undefined
-            assertParamExists('ticketControllerUpdateTicket', 'updateTicketDto', updateTicketDto)
-            const localVarPath = `/ticket/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateTicketDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2578,8 +2673,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerCreateTicket(createTicketDto, options);
+        async ticketAdminControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerCreateTicket(createTicketDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2588,8 +2683,57 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerDeleteTicket(id, options);
+        async ticketAdminControllerDeleteTicket(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerDeleteTicket(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ticketAdminControllerGetTicketById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeepTicketDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerGetTicketById(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ticketAdminControllerGetTickets(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DeepTicketDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerGetTickets(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ticketAdminControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerGetTicketsForExperience(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ticketAdminControllerGetTicketsForMerchant(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DeepTicketDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerGetTicketsForMerchant(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateTicketDto} updateTicketDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ticketAdminControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerUpdateTicket(id, updateTicketDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2604,32 +2748,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerGetTickets(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTickets(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TicketDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerGetTicketsForExperience(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateTicketDto} updateTicketDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ticketControllerUpdateTicket(id, updateTicketDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2948,8 +3072,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: any): AxiosPromise<TicketDto> {
-            return localVarFp.ticketControllerCreateTicket(createTicketDto, options).then((request) => request(axios, basePath));
+        ticketAdminControllerCreateTicket(createTicketDto: CreateTicketDto, options?: any): AxiosPromise<TicketDto> {
+            return localVarFp.ticketAdminControllerCreateTicket(createTicketDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2957,8 +3081,52 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketControllerDeleteTicket(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.ticketControllerDeleteTicket(id, options).then((request) => request(axios, basePath));
+        ticketAdminControllerDeleteTicket(id: string, options?: any): AxiosPromise<void> {
+            return localVarFp.ticketAdminControllerDeleteTicket(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTicketById(id: string, options?: any): AxiosPromise<DeepTicketDto> {
+            return localVarFp.ticketAdminControllerGetTicketById(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTickets(options?: any): AxiosPromise<Array<DeepTicketDto>> {
+            return localVarFp.ticketAdminControllerGetTickets(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTicketsForExperience(id: string, options?: any): AxiosPromise<Array<TicketDto>> {
+            return localVarFp.ticketAdminControllerGetTicketsForExperience(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerGetTicketsForMerchant(options?: any): AxiosPromise<Array<DeepTicketDto>> {
+            return localVarFp.ticketAdminControllerGetTicketsForMerchant(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateTicketDto} updateTicketDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketAdminControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: any): AxiosPromise<TicketDto> {
+            return localVarFp.ticketAdminControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2971,30 +3139,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerGetTickets(options?: any): AxiosPromise<Array<TicketDto>> {
-            return localVarFp.ticketControllerGetTickets(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         ticketControllerGetTicketsForExperience(id: string, options?: any): AxiosPromise<Array<TicketDto>> {
             return localVarFp.ticketControllerGetTicketsForExperience(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateTicketDto} updateTicketDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: any): AxiosPromise<TicketDto> {
-            return localVarFp.ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3381,8 +3531,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public ticketControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerCreateTicket(createTicketDto, options).then((request) => request(this.axios, this.basePath));
+    public ticketAdminControllerCreateTicket(createTicketDto: CreateTicketDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerCreateTicket(createTicketDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3392,8 +3542,62 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public ticketControllerDeleteTicket(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerDeleteTicket(id, options).then((request) => request(this.axios, this.basePath));
+    public ticketAdminControllerDeleteTicket(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerDeleteTicket(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public ticketAdminControllerGetTicketById(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerGetTicketById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public ticketAdminControllerGetTickets(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerGetTickets(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public ticketAdminControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerGetTicketsForExperience(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public ticketAdminControllerGetTicketsForMerchant(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerGetTicketsForMerchant(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UpdateTicketDto} updateTicketDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public ticketAdminControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).ticketAdminControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3409,16 +3613,6 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerGetTickets(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerGetTickets(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3426,18 +3620,6 @@ export class DefaultApi extends BaseAPI {
      */
     public ticketControllerGetTicketsForExperience(id: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).ticketControllerGetTicketsForExperience(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {UpdateTicketDto} updateTicketDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public ticketControllerUpdateTicket(id: string, updateTicketDto: UpdateTicketDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).ticketControllerUpdateTicket(id, updateTicketDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
