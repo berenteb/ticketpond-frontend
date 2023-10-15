@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 export function useOrders() {
   return useSWR('orders', async () => {
-    const response = await authenticatedApiService.orderControllerGetOrders();
+    const response = await authenticatedApiService.orderAdminControllerGetOrders();
     return response.data;
   });
 }

@@ -14,12 +14,13 @@ import { TbChevronRight } from 'react-icons/tb';
 
 interface OrderListItemProps extends HTMLAttributes<HTMLDivElement> {
   order: OrderDto;
+  href: string;
 }
 
-export function OrderListItem({ order, className, ...props }: OrderListItemProps) {
+export function OrderListItem({ order, className, href, ...props }: OrderListItemProps) {
   const sumPrice = order.items.reduce((acc, item) => acc + item.price, 0);
   return (
-    <Link href={`/profile/orders/${order.id}`}>
+    <Link href={href}>
       <Card className={clsx('flex items-center gap-5 justify-between p-5', className)} {...props}>
         <div className='text-left'>
           <h3 className='text-xl font-bold'>{order.serialNumber}</h3>

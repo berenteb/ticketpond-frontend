@@ -4,14 +4,16 @@ import { IconType } from 'react-icons';
 import { TbBuilding, TbMail, TbPhone } from 'react-icons/tb';
 
 interface DataCardProps {
+  name?: string;
   phone?: string;
   email?: string;
   address?: string;
 }
 
-export function DataCard({ phone, address, email }: DataCardProps) {
+export function DataCard({ name, phone, address, email }: DataCardProps) {
   return (
     <Card className='flex flex-col gap-5 p-5 w-fit text-slate-800'>
+      {name && <h3 className='text-xl font-bold'>{name}</h3>}
       {email && (
         <DataCardItem icon={TbMail}>
           <TextLink href={`mailto:${email}`}>{email}</TextLink>
