@@ -8,14 +8,14 @@ export default withPageAuthRequired(function AdminTicketList() {
   const { data } = useTickets();
   if (!data)
     return (
-      <main>
-        <h1>Jegyek</h1>
+      <>
+        <h2>Jegyek</h2>
         <p>Betöltés...</p>
-      </main>
+      </>
     );
   return (
-    <main>
-      <h1>Jegyek</h1>
+    <>
+      <h2>Jegyek</h2>
       <ul className='flex flex-col gap-5'>
         {data.map((ticket) => (
           <li key={ticket.id}>
@@ -23,6 +23,6 @@ export default withPageAuthRequired(function AdminTicketList() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 });

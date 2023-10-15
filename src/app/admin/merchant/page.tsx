@@ -8,14 +8,14 @@ export default withPageAuthRequired(function AdminMerchantList() {
   const { data } = useMerchants();
   if (!data)
     return (
-      <main>
-        <h1>Kereskedők</h1>
+      <>
+        <h2>Kereskedők</h2>
         <p>Betöltés...</p>
-      </main>
+      </>
     );
   return (
-    <main>
-      <h1>Kereskedők</h1>
+    <>
+      <h2>Kereskedők</h2>
       <ul className='flex flex-col gap-5'>
         {data.map((merchant) => (
           <li key={merchant.id}>
@@ -23,6 +23,6 @@ export default withPageAuthRequired(function AdminMerchantList() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 });

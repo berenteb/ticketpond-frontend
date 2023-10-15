@@ -41,8 +41,8 @@ export default withPageAuthRequired(function AdminMerchantPage() {
     reset(data);
   }, [data]);
   return (
-    <main>
-      <h1>Kereskedő szerkesztése</h1>
+    <>
+      <h2>Kereskedő szerkesztése</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           label='Kereskedő neve'
@@ -68,6 +68,6 @@ export default withPageAuthRequired(function AdminMerchantPage() {
           Mentés
         </Button>
       </form>
-    </main>
+    </>
   );
 });

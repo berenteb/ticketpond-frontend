@@ -7,8 +7,8 @@ export default withPageAuthRequired(function AdminCustomerList() {
   const { data } = useCustomers();
   if (!data) return <div>Loading...</div>;
   return (
-    <main>
-      <h1>Felhasználók</h1>
+    <>
+      <h2>Felhasználók</h2>
       <ul className='flex flex-col gap-5'>
         {data.map((customer) => (
           <li key={customer.id}>
@@ -16,6 +16,6 @@ export default withPageAuthRequired(function AdminCustomerList() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 });

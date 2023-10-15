@@ -8,21 +8,21 @@ export default withPageAuthRequired(function AdminExperienceList() {
   const { data } = useExperiences();
   if (!data)
     return (
-      <main>
-        <h1>Élmények</h1>
+      <>
+        <h2>Élmények</h2>
         <p>Betöltés...</p>
-      </main>
+      </>
     );
   return (
-    <main>
-      <h1>Élmények</h1>
+    <>
+      <h2>Élmények</h2>
       <ul className='flex flex-col gap-5'>
         {data.map((experience) => (
           <li key={experience.id}>
-            <ExperienceListItem experience={experience} />
+            <ExperienceListItem experience={experience} href={`/admin/experience/${experience.id}`} />
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 });

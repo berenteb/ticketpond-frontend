@@ -22,10 +22,10 @@ export default withPageAuthRequired(function AdminOrderPage() {
   }, [data?.items]);
   if (!data) return null;
   return (
-    <main>
-      <h1>
+    <>
+      <h2>
         Rendelés megtekintése <span className='text-slate-300'>| {data.serialNumber}</span>
-      </h1>
+      </h2>
       <div className='flex gap-3'>
         <Badge text={OrderStatusBadgeText[data.orderStatus]} color={OrderStatusBadgeColor[data.orderStatus]} />
         <Badge text={PaymentStatusBadgeText[data.paymentStatus]} color={PaymentStatusBadgeColor[data.paymentStatus]} />
@@ -35,6 +35,6 @@ export default withPageAuthRequired(function AdminOrderPage() {
           <OrderItemGroup key={group.experience.id} groupedItems={group} />
         ))}
       </div>
-    </main>
+    </>
   );
 });

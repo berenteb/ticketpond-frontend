@@ -42,8 +42,8 @@ export default withPageAuthRequired(function AdminCustomerPage() {
   }, [customer.data]);
 
   return (
-    <main>
-      <h1>Vásárló szerkesztése</h1>
+    <>
+      <h2>Vásárló szerkesztése</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input label='Vezetéknév' placeholder='Példa' error={errors.lastName?.message} {...register('lastName')} />
         <Input label='Keresztnév' placeholder='Béla' error={errors.firstName?.message} {...register('firstName')} />
@@ -59,6 +59,6 @@ export default withPageAuthRequired(function AdminCustomerPage() {
           Létrehozom!
         </Button>
       </form>
-    </main>
+    </>
   );
 });

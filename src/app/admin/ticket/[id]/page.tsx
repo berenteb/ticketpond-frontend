@@ -50,8 +50,8 @@ export default withPageAuthRequired(function AdminTicketPage() {
   }, [ticket.data]);
 
   return (
-    <main>
-      <h1>Jegy szerkesztése</h1>
+    <>
+      <h2>Jegy szerkesztése</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input label='Jegy neve' placeholder='Napi jegy' error={errors.name?.message} {...register('name')} />
         <Input
@@ -84,6 +84,6 @@ export default withPageAuthRequired(function AdminTicketPage() {
           Mentés
         </Button>
       </form>
-    </main>
+    </>
   );
 });

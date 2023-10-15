@@ -17,7 +17,7 @@ import { ObjectSchema } from 'yup';
 const schema: ObjectSchema<UpdateExperienceDto> = yup.object().shape({
   name: yup.string().required('A név megadása kötelező!'),
   description: yup.string().required('A leírás megadása kötelező!'),
-  bannerImage: yup.string().url('Nem jó formátum').required('Az e-mail cím megadása kötelező!'),
+  bannerImage: yup.string().url('Nem jó formátum').required('Az borítókép címének cím megadása kötelező!'),
   startDate: yup.string().required('A telefonszám megadása kötelező!'),
   endDate: yup.string().required('A lakcím megadása kötelező!'),
 });
@@ -52,8 +52,8 @@ export default withPageAuthRequired(function AdminExperiencePage() {
   }, [experience.data]);
 
   return (
-    <main>
-      <h1>Élmény szerkesztése</h1>
+    <>
+      <h2>Élmény szerkesztése</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input label='Élmény neve' placeholder='Fesztivál' error={errors.name?.message} {...register('name')} />
         <Input label='Leírás' placeholder='Jó lesz' error={errors.description?.message} {...register('description')} />
@@ -79,6 +79,6 @@ export default withPageAuthRequired(function AdminExperiencePage() {
           Mentés
         </Button>
       </form>
-    </main>
+    </>
   );
 });
