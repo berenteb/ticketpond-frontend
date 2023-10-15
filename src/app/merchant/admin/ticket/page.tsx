@@ -6,7 +6,7 @@ import { useTicketsForMerchant } from '@/hooks/useTicketsForMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 
-export default withPageAuthRequired(function AdminTicketList() {
+export default withPageAuthRequired(function MerchantTicketList() {
   const { data } = useTicketsForMerchant();
   if (!data)
     return (

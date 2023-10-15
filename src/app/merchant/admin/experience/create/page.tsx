@@ -19,7 +19,7 @@ const schema: ObjectSchema<CreateExperienceDto> = yup.object().shape({
   endDate: yup.string().required('A lakcím megadása kötelező!'),
 });
 
-export default withPageAuthRequired(function AdminExperiencePage() {
+export default withPageAuthRequired(function MerchantExperienceCreatePage() {
   const router = useRouter();
   const createExperience = useCreateExperience();
   const {
