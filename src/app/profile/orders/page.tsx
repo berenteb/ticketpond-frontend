@@ -13,7 +13,7 @@ export default withPageAuthRequired(function ProfileOrdersPage() {
       <ul className='flex flex-col gap-5'>
         {data.map((order) => (
           <li key={order.id}>
-            <OrderListItem order={order} />
+            <OrderListItem order={order} href={`/profile/orders/${order.id}`} />
           </li>
         ))}
       </ul>
