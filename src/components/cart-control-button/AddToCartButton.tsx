@@ -2,8 +2,8 @@
 
 import { Button, ButtonProps } from '@/components/button/Button';
 import { CartItemCountIndicator } from '@/components/cart/CartItemCountIndicator';
-import { useAddToCartForCustomer } from '@/hooks/useAddToCartForCustomer';
-import { useCart } from '@/hooks/useCart';
+import { useAddToCart } from '@/hooks/customer/cart/useAddToCart';
+import { useCart } from '@/hooks/customer/cart/useCart';
 import { useMemo } from 'react';
 import { TbShoppingCart } from 'react-icons/tb';
 
@@ -12,7 +12,7 @@ interface AddToCartButtonProps extends Omit<ButtonProps, 'onClick'> {
 }
 
 export function AddToCartButton({ ticketId, iconBefore, ...props }: AddToCartButtonProps) {
-  const { trigger, isMutating } = useAddToCartForCustomer();
+  const { trigger, isMutating } = useAddToCart();
   const { data, mutate } = useCart();
   const onClick = () => {
     trigger({ ticketId, quantity: 1 }).then(mutate);

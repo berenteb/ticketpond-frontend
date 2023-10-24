@@ -1,11 +1,11 @@
 'use client';
 
 import { ExperienceListItem } from '@/components/experience-list-item/ExperienceListItem';
-import { useExperiences } from '@/hooks/useExperiences';
+import { useAdminExperiences } from '@/hooks/admin/experience/useAdminExperiences';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function AdminExperienceList() {
-  const { data } = useExperiences();
+  const { data } = useAdminExperiences();
   if (!data)
     return (
       <>

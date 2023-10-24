@@ -3,8 +3,8 @@
 import { UpdateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useMerchantMe } from '@/hooks/useMerchantMe';
-import { useUpdateMerchant } from '@/hooks/useUpdateMerchant';
+import { useMerchantMe } from '@/hooks/merchant/profile/useMerchantMe';
+import { useSelfUpdateMerchant } from '@/hooks/merchant/profile/useSelfUpdateMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
@@ -24,7 +24,7 @@ const schema: ObjectSchema<UpdateMerchantDto> = yup.object().shape({
 export default withPageAuthRequired(function MerchantProfilePage() {
   const router = useRouter();
   const { data } = useMerchantMe();
-  const updateMerchant = useUpdateMerchant(data?.id ?? '');
+  const updateMerchant = useSelfUpdateMerchant(data?.id ?? '');
   const {
     register,
     handleSubmit,

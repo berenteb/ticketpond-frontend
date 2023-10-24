@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@/components/button/Button';
-import { useAddToCartForCustomer } from '@/hooks/useAddToCartForCustomer';
-import { useRemoveFromCartForCustomer } from '@/hooks/useRemoveFromCartForCustomer';
+import { useAddToCart } from '@/hooks/customer/cart/useAddToCart';
+import { useRemoveFromCart } from '@/hooks/customer/cart/useRemoveFromCart';
 import React, { HTMLAttributes } from 'react';
 import { TbMinus, TbPlus, TbTrash } from 'react-icons/tb';
 
@@ -13,8 +13,8 @@ interface CartItemStepperProps extends React.DetailedHTMLProps<HTMLAttributes<HT
 }
 
 export function CartItemStepper({ ticketId, count, onCountChange, ...props }: CartItemStepperProps) {
-  const removeItem = useRemoveFromCartForCustomer();
-  const addItem = useAddToCartForCustomer();
+  const removeItem = useRemoveFromCart();
+  const addItem = useAddToCart();
   const onIncrement = () =>
     addItem.trigger({ ticketId, quantity: 1 }).then(() => {
       if (onCountChange) onCountChange();

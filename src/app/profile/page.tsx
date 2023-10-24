@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/button/Button';
 import { DataCard } from '@/components/data-card/DataCard';
-import { useMe } from '@/hooks/useMe';
+import { useMe } from '@/hooks/customer/profile/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
 import Link from 'next/link';

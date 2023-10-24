@@ -2,12 +2,12 @@
 
 import { Button } from '@/components/button/Button';
 import { ExperienceListItem } from '@/components/experience-list-item/ExperienceListItem';
-import { useExperiencesForMerchant } from '@/hooks/useExperiencesForMerchant';
+import { useMerchantExperiences } from '@/hooks/merchant/experience/useMerchantExperiences';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 
 export default withPageAuthRequired(function MerchantExperienceList() {
-  const { data } = useExperiencesForMerchant();
+  const { data } = useMerchantExperiences();
   if (!data)
     return (
       <>

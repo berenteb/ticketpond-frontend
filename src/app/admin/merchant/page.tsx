@@ -1,11 +1,11 @@
 'use client';
 
 import { MerchantListItem } from '@/components/merchant-list-item/MerchantListItem';
-import { useMerchants } from '@/hooks/useMerchants';
+import { useAdminMerchants } from '@/hooks/admin/merchant/useAdminMerchants';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function AdminMerchantList() {
-  const { data } = useMerchants();
+  const { data } = useAdminMerchants();
   if (!data)
     return (
       <>

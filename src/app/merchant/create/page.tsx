@@ -3,8 +3,8 @@
 import { CreateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useMerchantMe } from '@/hooks/useMerchantMe';
-import { useRegisterMerchant } from '@/hooks/useRegisterMerchant';
+import { useMerchantMe } from '@/hooks/merchant/profile/useMerchantMe';
+import { useRegisterMerchant } from '@/hooks/merchant/profile/useRegisterMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';

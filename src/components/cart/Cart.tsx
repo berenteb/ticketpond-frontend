@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/button/Button';
 import { CartItemCountIndicator } from '@/components/cart/CartItemCountIndicator';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/hooks/customer/cart/useCart';
 import Link from 'next/link';
 import { TbShoppingCart } from 'react-icons/tb';
 

@@ -3,8 +3,8 @@
 import { UpdateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useTicket } from '@/hooks/useTicket';
-import { useUpdateTicket } from '@/hooks/useUpdateTicket';
+import { useMerchantTicket } from '@/hooks/merchant/ticket/useMerchantTicket';
+import { useMerchantUpdateTicket } from '@/hooks/merchant/ticket/useMerchantUpdateTicket';
 import { formatDateHu } from '@/utils/common.utils';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,8 +26,8 @@ export default withPageAuthRequired(function MerchantTicketPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const ticket = useTicket(id);
-  const updateTicket = useUpdateTicket(id);
+  const ticket = useMerchantTicket(id);
+  const updateTicket = useMerchantUpdateTicket(id);
 
   const {
     register,

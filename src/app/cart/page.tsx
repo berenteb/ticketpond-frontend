@@ -2,8 +2,8 @@
 
 import { Button } from '@/components/button/Button';
 import { CartTicketGroup } from '@/components/cart-item-card/CartTicketGroup';
-import { useCart } from '@/hooks/useCart';
-import { useCheckout } from '@/hooks/useCheckout';
+import { useCart } from '@/hooks/customer/cart/useCart';
+import { useCheckout } from '@/hooks/customer/cart/useCheckout';
 import { groupItemsByExperience } from '@/utils/cart.utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

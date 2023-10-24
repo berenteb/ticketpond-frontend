@@ -1,10 +1,10 @@
 'use client';
 import { CustomerListItem } from '@/components/customer-list-item/CustomerListItem';
-import { useCustomers } from '@/hooks/useCustomers';
+import { useAdminCustomers } from '@/hooks/admin/customer/useAdminCustomers';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function AdminCustomerList() {
-  const { data } = useCustomers();
+  const { data } = useAdminCustomers();
   if (!data) return <div>Loading...</div>;
   return (
     <>

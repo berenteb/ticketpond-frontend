@@ -4,8 +4,8 @@ import { CreateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
 import { Select } from '@/components/form/select/Select';
-import { useCreateTicket } from '@/hooks/useCreateTicket';
-import { useExperiencesForMerchant } from '@/hooks/useExperiencesForMerchant';
+import { useCreateTicket } from '@/hooks/merchant/ticket/useCreateTicket';
+import { useMerchantExperiences } from '@/hooks/merchant/experience/useMerchantExperiences';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
@@ -25,7 +25,7 @@ const schema: ObjectSchema<CreateTicketDto> = yup.object().shape({
 export default withPageAuthRequired(function MerchantTicketCreatePage() {
   const router = useRouter();
   const createTicket = useCreateTicket();
-  const experiences = useExperiencesForMerchant();
+  const experiences = useMerchantExperiences();
   const {
     register,
     handleSubmit,

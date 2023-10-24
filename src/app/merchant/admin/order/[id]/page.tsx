@@ -3,7 +3,7 @@
 import { Badge } from '@/components/badge/Badge';
 import { DataCard } from '@/components/data-card/DataCard';
 import { OrderItemGroup } from '@/components/order-item-card/OrderItemGroup';
-import { useOrderAdmin } from '@/hooks/useOrderAdmin';
+import { useMerchantOrder } from '@/hooks/merchant/order/useMerchantOrder';
 import {
   groupItemsByExperience,
   OrderStatusBadgeColor,
@@ -17,7 +17,7 @@ import { useMemo } from 'react';
 
 export default withPageAuthRequired(function MerchantOrderPage() {
   const params = useParams();
-  const { data } = useOrderAdmin(Array.isArray(params.id) ? params.id[0] : params.id);
+  const { data } = useMerchantOrder(Array.isArray(params.id) ? params.id[0] : params.id);
   const groupedItems = useMemo(() => {
     return groupItemsByExperience(data?.items ?? []);
   }, [data?.items]);

@@ -3,8 +3,8 @@
 import { UpdateExperienceDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useExperience } from '@/hooks/useExperience';
-import { useUpdateExperience } from '@/hooks/useUpdateExperience';
+import { useAdminExperience } from '@/hooks/admin/experience/useAdminExperience';
+import { useAdminUpdateExperience } from '@/hooks/admin/experience/useAdminUpdateExperience';
 import { formatDateHu } from '@/utils/common.utils';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,8 +26,8 @@ export default withPageAuthRequired(function AdminExperiencePage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const experience = useExperience(id);
-  const updateExperience = useUpdateExperience(id);
+  const experience = useAdminExperience(id);
+  const updateExperience = useAdminUpdateExperience(id);
   const {
     register,
     handleSubmit,

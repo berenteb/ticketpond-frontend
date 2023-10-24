@@ -3,8 +3,8 @@
 import { UpdateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useCustomer } from '@/hooks/useCustomer';
-import { useUpdateCustomer } from '@/hooks/useUpdateCustomer';
+import { useAdminCustomer } from '@/hooks/admin/customer/useAdminCustomer';
+import { useAdminUpdateCustomer } from '@/hooks/admin/customer/useAdminUpdateCustomer';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useParams, useRouter } from 'next/navigation';
@@ -25,8 +25,8 @@ export default withPageAuthRequired(function AdminCustomerPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const customer = useCustomer(id);
-  const updateCustomer = useUpdateCustomer(id);
+  const customer = useAdminCustomer(id);
+  const updateCustomer = useAdminUpdateCustomer(id);
   const {
     register,
     handleSubmit,

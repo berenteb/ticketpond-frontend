@@ -1,11 +1,11 @@
 'use client';
 
 import { OrderListItem } from '@/components/order-list-item/OrderListItem';
-import { useOrders } from '@/hooks/useOrders';
+import { useAdminOrders } from '@/hooks/admin/order/useAdminOrders';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function AdminOrderList() {
-  const { data } = useOrders();
+  const { data } = useAdminOrders();
   if (!data)
     return (
       <>

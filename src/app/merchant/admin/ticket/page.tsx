@@ -2,12 +2,12 @@
 
 import { Button } from '@/components/button/Button';
 import { TicketListItem } from '@/components/ticket-list-item/TicketListItem';
-import { useTicketsForMerchant } from '@/hooks/useTicketsForMerchant';
+import { useMerchantTickets } from '@/hooks/merchant/ticket/useMerchantTickets';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 
 export default withPageAuthRequired(function MerchantTicketList() {
-  const { data } = useTicketsForMerchant();
+  const { data } = useMerchantTickets();
   if (!data)
     return (
       <>

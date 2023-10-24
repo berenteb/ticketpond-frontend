@@ -2,7 +2,7 @@
 
 import { Badge } from '@/components/badge/Badge';
 import { OrderItemGroup } from '@/components/order-item-card/OrderItemGroup';
-import { useOrder } from '@/hooks/useOrder';
+import { useOrder } from '@/hooks/customer/order/useOrder';
 import {
   groupItemsByExperience,
   OrderStatusBadgeColor,

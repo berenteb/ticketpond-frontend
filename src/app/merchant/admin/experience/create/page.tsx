@@ -3,7 +3,7 @@
 import { CreateExperienceDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useCreateExperience } from '@/hooks/useCreateExperience';
+import { useCreateExperience } from '@/hooks/merchant/experience/useCreateExperience';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';

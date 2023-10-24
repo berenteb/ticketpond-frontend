@@ -1,11 +1,11 @@
 'use client';
 
 import { TicketListItem } from '@/components/ticket-list-item/TicketListItem';
-import { useTickets } from '@/hooks/useTickets';
+import { useAdminTickets } from '@/hooks/admin/ticket/useAdminTickets';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function AdminTicketList() {
-  const { data } = useTickets();
+  const { data } = useAdminTickets();
   if (!data)
     return (
       <>

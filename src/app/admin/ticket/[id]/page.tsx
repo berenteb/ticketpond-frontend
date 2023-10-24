@@ -3,8 +3,8 @@
 import { UpdateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useTicket } from '@/hooks/useTicket';
-import { useUpdateTicket } from '@/hooks/useUpdateTicket';
+import { useAdminTicket } from '@/hooks/admin/ticket/useAdminTicket';
+import { useAdminUpdateTicket } from '@/hooks/admin/ticket/useAdminUpdateTicket';
 import { formatDateHu } from '@/utils/common.utils';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,8 +26,8 @@ export default withPageAuthRequired(function AdminTicketPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const ticket = useTicket(id);
-  const updateTicket = useUpdateTicket(id);
+  const ticket = useAdminTicket(id);
+  const updateTicket = useAdminUpdateTicket(id);
   const {
     register,
     handleSubmit,

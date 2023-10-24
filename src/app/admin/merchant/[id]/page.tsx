@@ -3,8 +3,8 @@
 import { UpdateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
-import { useMerchant } from '@/hooks/useMerchant';
-import { useUpdateMerchant } from '@/hooks/useUpdateMerchant';
+import { useAdminMerchant } from '@/hooks/admin/merchant/useAdminMerchant';
+import { useAdminUpdateMerchant } from '@/hooks/admin/merchant/useAdminUpdateMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useParams, useRouter } from 'next/navigation';
@@ -25,8 +25,8 @@ export default withPageAuthRequired(function AdminMerchantPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const { data } = useMerchant(id);
-  const updateMerchant = useUpdateMerchant(id);
+  const { data } = useAdminMerchant(id);
+  const updateMerchant = useAdminUpdateMerchant(id);
   const {
     register,
     handleSubmit,

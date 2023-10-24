@@ -1,7 +1,7 @@
 'use client';
 
 import { TextLink } from '@/components/text-Link/TextLink';
-import { useMerchantMe } from '@/hooks/useMerchantMe';
+import { useMerchantMe } from '@/hooks/merchant/profile/useMerchantMe';
 
 export default function MerchantAdminLayout({ children }: { children: React.ReactNode }) {
   const { data } = useMerchantMe();

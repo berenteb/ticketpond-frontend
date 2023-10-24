@@ -1,11 +1,11 @@
 'use client';
 
 import { OrderListItem } from '@/components/order-list-item/OrderListItem';
-import { useOrdersForMerchant } from '@/hooks/useOrdersForMerchant';
+import { useMerchantOrders } from '@/hooks/merchant/order/useMerchantOrders';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 
 export default withPageAuthRequired(function MerchantOrderList() {
-  const { data } = useOrdersForMerchant();
+  const { data } = useMerchantOrders();
   if (!data)
     return (
       <>
