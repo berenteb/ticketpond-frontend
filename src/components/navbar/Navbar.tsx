@@ -23,7 +23,7 @@ export function Navbar() {
           <TextLink className='text-lg' href='/'>
             Főoldal
           </TextLink>
-          <TextLink className='text-lg' href='/experiences'>
+          <TextLink className='text-lg' href='/experience'>
             Élmények
           </TextLink>
           <TextLink className='text-lg' href='/merchant/admin'>
