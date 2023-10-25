@@ -5,7 +5,6 @@ import { ExperienceListItem } from '@/components/experience-list-item/Experience
 import { Spinner } from '@/components/spinner/Spinner';
 import { useMerchantExperiences } from '@/hooks/merchant/experience/useMerchantExperiences';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import Link from 'next/link';
 
 export default withPageAuthRequired(function MerchantExperienceList() {
   const { data, isLoading } = useMerchantExperiences();
@@ -13,9 +12,9 @@ export default withPageAuthRequired(function MerchantExperienceList() {
     <>
       <div className='flex justify-between items-center'>
         <h2>Élmények</h2>
-        <Link href={`/merchant/admin/experience/create`}>
-          <Button>Új élmény</Button>
-        </Link>
+        <Button as='link' href='/merchant/admin/experience/create'>
+          Új élmény
+        </Button>
       </div>
       {isLoading && <Spinner />}
       <ul className='flex flex-col gap-5'>

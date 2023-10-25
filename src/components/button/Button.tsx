@@ -1,10 +1,12 @@
 import { Spinner } from '@/components/spinner/Spinner';
 import { clsx } from 'clsx';
+import Link, { LinkProps } from 'next/link';
 import React from 'react';
 import { IconType } from 'react-icons';
+
 type Size = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseProps {
   variant?: 'primary' | 'secondary' | 'subtle';
   iconBefore?: IconType;
   iconAfter?: IconType;
@@ -12,12 +14,22 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: Size;
 }
 
+type ButtonProps = BaseProps &
+  (
+    | (React.ButtonHTMLAttributes<HTMLButtonElement> & {
+        as?: 'button';
+      })
+    | (React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+        as?: 'link';
+      })
+  );
+
 export function Button({
+  as = 'button',
   variant = 'primary',
   iconAfter,
   iconBefore,
   isLoading,
-  disabled,
   className,
   children,
   size = 'md',
@@ -27,25 +39,35 @@ export function Button({
   const IconAfter = iconAfter;
   const isIconOnly = !children && (IconBefore || IconAfter);
   const iconSize = iconSizes[size];
-  return (
-    <button
-      className={clsx(
-        'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center',
-        {
-          'px-3': isIconOnly,
-          'bg-primary-500 hover:bg-opacity-80 text-white shadow-md shadow-primary-300': variant === 'primary',
-          'border-2 border-primary-500': variant === 'secondary',
-          'hover:bg-primary-500 hover:bg-opacity-20': variant === 'subtle' || variant === 'secondary',
-        },
-        className
-      )}
-      disabled={isLoading || disabled}
-      {...props}
-    >
+  const classNames = clsx(
+    'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center',
+    {
+      'px-3': isIconOnly,
+      'bg-primary-500 hover:bg-opacity-80 text-white shadow-md shadow-primary-300': variant === 'primary',
+      'border-2 border-primary-500': variant === 'secondary',
+      'hover:bg-primary-500 hover:bg-opacity-20': variant === 'subtle' || variant === 'secondary',
+    },
+    className
+  );
+  const content = (
+    <>
       {IconBefore && !isLoading && <IconBefore size={iconSize} />}
       {isLoading && <Spinner size='sm' />}
       {children}
       {IconAfter && <IconAfter size={iconSize} />}
+    </>
+  );
+
+  if (as === 'link') {
+    return (
+      <Link className={classNames} {...(props as LinkProps)}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <button className={classNames} {...(props as any)}>
+      {content}
     </button>
   );
 }

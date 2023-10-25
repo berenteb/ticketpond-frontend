@@ -1,12 +1,10 @@
 'use client';
 
-import { Button } from '@/components/button/Button';
 import { DataCard } from '@/components/data-card/DataCard';
 import { Spinner } from '@/components/spinner/Spinner';
 import { useMe } from '@/hooks/customer/profile/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default withPageAuthRequired(function ProfilePage() {
   const authUser = useUser();
@@ -25,9 +23,6 @@ export default withPageAuthRequired(function ProfilePage() {
         </h1>
       </div>
       <DataCard phone={me.data.phone} email={me.data.email} address={me.data.address} />
-      <Link href={'/api/auth/logout'}>
-        <Button variant='subtle'>Kijelentkezés</Button>
-      </Link>
     </main>
   );
 }, {});

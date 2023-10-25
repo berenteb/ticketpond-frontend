@@ -4,7 +4,6 @@ import { Button } from '@/components/button/Button';
 import { Spinner } from '@/components/spinner/Spinner';
 import { useOrder } from '@/hooks/customer/order/useOrder';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { TbCircleCheckFilled } from 'react-icons/tb';
 
@@ -27,9 +26,9 @@ export default withPageAuthRequired(function PaymentSuccessPage() {
           <h1>Sikeres fizetés</h1>
           <p>{order.data.serialNumber}</p>
         </div>
-        <Link href={`/profile/orders/${order.data.id}`}>
-          <Button>Rendelés megtekintése</Button>
-        </Link>
+        <Button as='link' href={`/profile/orders/${order.data.id}`}>
+          Rendelés megtekintése
+        </Button>
       </div>
     </main>
   );

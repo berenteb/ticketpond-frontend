@@ -13,7 +13,6 @@ import {
   PaymentStatusBadgeText,
 } from '@/utils/order.utils';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
 
@@ -46,9 +45,9 @@ export default withPageAuthRequired(function ProfileOrderPage() {
         ))}
       </div>
       {data.paymentStatus !== 'SUCCESS' && data.orderStatus !== 'CANCELLED' && (
-        <Link href={`/payment/${data.id}`}>
-          <Button>Fizetés</Button>
-        </Link>
+        <Button as='link' href={`/payment/${data.id}`}>
+          Fizetés
+        </Button>
       )}
     </main>
   );
