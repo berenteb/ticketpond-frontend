@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckoutForm } from '@/components/checkout-form/CheckoutForm';
+import { Spinner } from '@/components/spinner/Spinner';
 import { usePaymentIntent } from '@/hooks/customer/payment/usePaymentIntent';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Elements } from '@stripe/react-stripe-js';
@@ -13,13 +14,14 @@ export default withPageAuthRequired(function PaymentPage() {
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const paymentIntent = usePaymentIntent(id);
-  if (paymentIntent.isLoading) return null;
-  if (paymentIntent.error || !paymentIntent.data)
+
+  if (paymentIntent.isLoading)
     return (
       <main>
-        <p>{paymentIntent.error.message}</p>
+        <Spinner />
       </main>
     );
+  if (!paymentIntent.data) return null;
 
   const options: StripeElementsOptions = {
     clientSecret: paymentIntent.data.clientSecret,

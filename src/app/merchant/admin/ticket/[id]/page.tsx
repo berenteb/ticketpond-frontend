@@ -3,6 +3,7 @@
 import { UpdateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useMerchantTicket } from '@/hooks/merchant/ticket/useMerchantTicket';
 import { useMerchantUpdateTicket } from '@/hooks/merchant/ticket/useMerchantUpdateTicket';
 import { formatDateHu } from '@/utils/common.utils';
@@ -53,6 +54,8 @@ export default withPageAuthRequired(function MerchantTicketPage() {
       validTo: formatDateHu(new Date(ticket.data.validTo)),
     });
   }, [ticket.data]);
+
+  if (ticket.isLoading) return <Spinner />;
 
   return (
     <>

@@ -3,6 +3,7 @@
 import { UpdateExperienceDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useAdminExperience } from '@/hooks/admin/experience/useAdminExperience';
 import { useAdminUpdateExperience } from '@/hooks/admin/experience/useAdminUpdateExperience';
 import { formatDateHu } from '@/utils/common.utils';
@@ -50,6 +51,8 @@ export default withPageAuthRequired(function AdminExperiencePage() {
       endDate: formatDateHu(new Date(experience.data.endDate)),
     });
   }, [experience.data]);
+
+  if (experience.isLoading) return <Spinner />;
 
   return (
     <>

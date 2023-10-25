@@ -3,6 +3,7 @@
 import { UpdateExperienceDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useMerchantExperience } from '@/hooks/merchant/experience/useMerchantExperience';
 import { useMerchantUpdateExperience } from '@/hooks/merchant/experience/useMerchantUpdateExperience';
 import { formatDateHu } from '@/utils/common.utils';
@@ -52,6 +53,8 @@ export default withPageAuthRequired(function MerchantExperiencePage() {
       endDate: formatDateHu(new Date(experience.data.endDate)),
     });
   }, [experience.data]);
+
+  if (experience.isLoading) return <Spinner />;
 
   return (
     <>

@@ -3,6 +3,7 @@
 import { UpdateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useMerchantMe } from '@/hooks/merchant/profile/useMerchantMe';
 import { useSelfUpdateMerchant } from '@/hooks/merchant/profile/useSelfUpdateMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -23,7 +24,7 @@ const schema: ObjectSchema<UpdateMerchantDto> = yup.object().shape({
 
 export default withPageAuthRequired(function MerchantProfilePage() {
   const router = useRouter();
-  const { data } = useMerchantMe();
+  const { data, isLoading } = useMerchantMe();
   const updateMerchant = useSelfUpdateMerchant(data?.id ?? '');
   const {
     register,
@@ -34,10 +35,14 @@ export default withPageAuthRequired(function MerchantProfilePage() {
   const onSubmit = (data: UpdateMerchantDto) => {
     updateMerchant.trigger(data).then(() => router.push('/merchant/admin'));
   };
+
   useEffect(() => {
     if (!data) return;
     reset(data);
   }, [data]);
+
+  if (isLoading) return <Spinner />;
+
   return (
     <>
       <h2>Kereskedő szerkesztése</h2>

@@ -2,19 +2,13 @@
 
 import { Button } from '@/components/button/Button';
 import { ExperienceListItem } from '@/components/experience-list-item/ExperienceListItem';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useMerchantExperiences } from '@/hooks/merchant/experience/useMerchantExperiences';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 
 export default withPageAuthRequired(function MerchantExperienceList() {
-  const { data } = useMerchantExperiences();
-  if (!data)
-    return (
-      <>
-        <h2>Élmények</h2>
-        <p>Betöltés...</p>
-      </>
-    );
+  const { data, isLoading } = useMerchantExperiences();
   return (
     <>
       <div className='flex justify-between items-center'>
@@ -23,13 +17,14 @@ export default withPageAuthRequired(function MerchantExperienceList() {
           <Button>Új élmény</Button>
         </Link>
       </div>
+      {isLoading && <Spinner />}
       <ul className='flex flex-col gap-5'>
-        {data.map((experience) => (
+        {data?.map((experience) => (
           <li key={experience.id}>
             <ExperienceListItem experience={experience} href={`/merchant/admin/experience/${experience.id}`} />
           </li>
         ))}
-        {data.length === 0 && <p>Nincs még élményed.</p>}
+        {data?.length === 0 && <p>Nincs még élményed.</p>}
       </ul>
     </>
   );

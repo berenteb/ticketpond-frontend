@@ -3,6 +3,7 @@
 import { UpdateTicketDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useAdminTicket } from '@/hooks/admin/ticket/useAdminTicket';
 import { useAdminUpdateTicket } from '@/hooks/admin/ticket/useAdminUpdateTicket';
 import { formatDateHu } from '@/utils/common.utils';
@@ -48,6 +49,8 @@ export default withPageAuthRequired(function AdminTicketPage() {
       validTo: formatDateHu(new Date(ticket.data.validTo)),
     });
   }, [ticket.data]);
+
+  if (ticket.isLoading) return <Spinner />;
 
   return (
     <>

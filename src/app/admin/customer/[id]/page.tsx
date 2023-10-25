@@ -3,6 +3,7 @@
 import { UpdateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useAdminCustomer } from '@/hooks/admin/customer/useAdminCustomer';
 import { useAdminUpdateCustomer } from '@/hooks/admin/customer/useAdminUpdateCustomer';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -40,6 +41,8 @@ export default withPageAuthRequired(function AdminCustomerPage() {
     if (!customer.data) return;
     reset(customer.data);
   }, [customer.data]);
+
+  if (customer.isLoading) return <Spinner />;
 
   return (
     <>

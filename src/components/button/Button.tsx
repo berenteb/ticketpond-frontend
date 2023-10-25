@@ -1,3 +1,4 @@
+import { Spinner } from '@/components/spinner/Spinner';
 import { clsx } from 'clsx';
 import React from 'react';
 import { IconType } from 'react-icons';
@@ -29,7 +30,7 @@ export function Button({
   return (
     <button
       className={clsx(
-        'px-20 py-3 rounded-md transition-colors',
+        'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center',
         {
           'px-3': isIconOnly,
           'bg-primary-500 hover:bg-opacity-80 text-white shadow-md shadow-primary-300': variant === 'primary',
@@ -41,7 +42,8 @@ export function Button({
       disabled={isLoading || disabled}
       {...props}
     >
-      {IconBefore && <IconBefore size={iconSize} />}
+      {IconBefore && !isLoading && <IconBefore size={iconSize} />}
+      {isLoading && <Spinner size='sm' />}
       {children}
       {IconAfter && <IconAfter size={iconSize} />}
     </button>

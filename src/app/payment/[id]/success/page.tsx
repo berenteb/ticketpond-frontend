@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/button/Button';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useOrder } from '@/hooks/customer/order/useOrder';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
@@ -11,6 +12,12 @@ export default withPageAuthRequired(function PaymentSuccessPage() {
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const order = useOrder(id);
+  if (order.isLoading)
+    return (
+      <main>
+        <Spinner />
+      </main>
+    );
   if (!order.data) return null;
   return (
     <main className='flex items-center justify-center flex-1'>

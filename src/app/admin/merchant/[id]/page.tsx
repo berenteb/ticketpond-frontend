@@ -3,6 +3,7 @@
 import { UpdateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useAdminMerchant } from '@/hooks/admin/merchant/useAdminMerchant';
 import { useAdminUpdateMerchant } from '@/hooks/admin/merchant/useAdminUpdateMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -25,7 +26,7 @@ export default withPageAuthRequired(function AdminMerchantPage() {
   const params = useParams();
   const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
-  const { data } = useAdminMerchant(id);
+  const merchant = useAdminMerchant(id);
   const updateMerchant = useAdminUpdateMerchant(id);
   const {
     register,
@@ -37,9 +38,12 @@ export default withPageAuthRequired(function AdminMerchantPage() {
     updateMerchant.trigger(data).then(() => router.push('/admin/merchant'));
   };
   useEffect(() => {
-    if (!data) return;
-    reset(data);
-  }, [data]);
+    if (!merchant.data) return;
+    reset(merchant.data);
+  }, [merchant.data]);
+
+  if (merchant.isLoading) return <Spinner />;
+
   return (
     <>
       <h2>Kereskedő szerkesztése</h2>

@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/button/Button';
 import { DataCard } from '@/components/data-card/DataCard';
+import { Spinner } from '@/components/spinner/Spinner';
 import { useMe } from '@/hooks/customer/profile/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ import Link from 'next/link';
 export default withPageAuthRequired(function ProfilePage() {
   const authUser = useUser();
   const me = useMe();
-  if (authUser.isLoading || me.isLoading) return <div>Loading...</div>;
+  if (authUser.isLoading || me.isLoading) return <Spinner />;
   if (authUser.error || me.error) return <div>Hiba</div>;
   if (!authUser.user || !me.data) return <></>;
   return (
