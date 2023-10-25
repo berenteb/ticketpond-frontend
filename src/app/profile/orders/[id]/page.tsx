@@ -1,6 +1,7 @@
 'use client';
 
 import { Badge } from '@/components/badge/Badge';
+import { Button } from '@/components/button/Button';
 import { OrderItemGroup } from '@/components/order-item-card/OrderItemGroup';
 import { useOrder } from '@/hooks/customer/order/useOrder';
 import {
@@ -11,6 +12,7 @@ import {
   PaymentStatusBadgeText,
 } from '@/utils/order.utils';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
 
@@ -35,6 +37,11 @@ export default withPageAuthRequired(function ProfileOrderPage() {
           <OrderItemGroup key={group.experience.id} groupedItems={group} />
         ))}
       </div>
+      {data.paymentStatus !== 'SUCCESS' && data.orderStatus !== 'CANCELLED' && (
+        <Link href={`/payment/${data.id}`}>
+          <Button>Fizetés</Button>
+        </Link>
+      )}
     </main>
   );
 });

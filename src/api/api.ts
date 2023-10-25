@@ -794,6 +794,19 @@ export interface OrderWithCustomerDto {
 /**
  * 
  * @export
+ * @interface PaymentDto
+ */
+export interface PaymentDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof PaymentDto
+     */
+    'clientSecret': string;
+}
+/**
+ * 
+ * @export
  * @interface RemoveFromCartDto
  */
 export interface RemoveFromCartDto {
@@ -2295,6 +2308,39 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        paymentControllerCreatePaymentIntent: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('paymentControllerCreatePaymentIntent', 'id', id)
+            const localVarPath = `/payment/intent/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         ticketAdminControllerDeleteTicket: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('ticketAdminControllerDeleteTicket', 'id', id)
@@ -3088,6 +3134,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        async paymentControllerCreatePaymentIntent(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.paymentControllerCreatePaymentIntent(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         async ticketAdminControllerDeleteTicket(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.ticketAdminControllerDeleteTicket(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -3553,6 +3609,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         orderMerchantControllerGetOrders(options?: any): AxiosPromise<Array<OrderWithCustomerDto>> {
             return localVarFp.orderMerchantControllerGetOrders(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        paymentControllerCreatePaymentIntent(id: string, options?: any): AxiosPromise<PaymentDto> {
+            return localVarFp.paymentControllerCreatePaymentIntent(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4090,6 +4155,17 @@ export class DefaultApi extends BaseAPI {
      */
     public orderMerchantControllerGetOrders(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).orderMerchantControllerGetOrders(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public paymentControllerCreatePaymentIntent(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).paymentControllerCreatePaymentIntent(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
