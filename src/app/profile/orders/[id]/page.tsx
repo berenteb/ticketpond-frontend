@@ -41,7 +41,7 @@ export default withPageAuthRequired(function ProfileOrderPage() {
       </div>
       <div className='flex flex-col gap-5'>
         {groupedItems.map((group) => (
-          <OrderItemGroup key={group.experience.id} groupedItems={group} />
+          <OrderItemGroup key={group.experience.id} groupedItems={group} isPaid={data.orderStatus === 'PAID'} />
         ))}
       </div>
       {data.paymentStatus !== 'SUCCESS' && data.orderStatus !== 'CANCELLED' && (

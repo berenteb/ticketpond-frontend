@@ -4,14 +4,11 @@ import Link, { LinkProps } from 'next/link';
 import React from 'react';
 import { IconType } from 'react-icons';
 
-type Size = 'sm' | 'md' | 'lg';
-
 interface BaseProps {
   variant?: 'primary' | 'secondary' | 'subtle';
   iconBefore?: IconType;
   iconAfter?: IconType;
   isLoading?: boolean;
-  size?: Size;
 }
 
 type ButtonProps = BaseProps &
@@ -32,13 +29,11 @@ export function Button({
   isLoading,
   className,
   children,
-  size = 'md',
   ...props
 }: ButtonProps) {
   const IconBefore = iconBefore;
   const IconAfter = iconAfter;
   const isIconOnly = !children && (IconBefore || IconAfter);
-  const iconSize = iconSizes[size];
   const classNames = clsx(
     'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center',
     {
@@ -51,10 +46,10 @@ export function Button({
   );
   const content = (
     <>
-      {IconBefore && !isLoading && <IconBefore size={iconSize} />}
+      {IconBefore && !isLoading && <IconBefore size={20} />}
       {isLoading && <Spinner size='sm' />}
       {children}
-      {IconAfter && <IconAfter size={iconSize} />}
+      {IconAfter && <IconAfter size={20} />}
     </>
   );
 
@@ -71,9 +66,3 @@ export function Button({
     </button>
   );
 }
-
-const iconSizes: Record<Size, number> = {
-  sm: 20,
-  md: 30,
-  lg: 40,
-};

@@ -10,9 +10,10 @@ import { TbChevronDown, TbChevronUp } from 'react-icons/tb';
 
 interface OrderItemGroupProps extends HTMLAttributes<HTMLDivElement> {
   groupedItems: GroupedItems;
+  isPaid?: boolean;
 }
 
-export function OrderItemGroup({ groupedItems, className, ...props }: OrderItemGroupProps) {
+export function OrderItemGroup({ groupedItems, isPaid, className, ...props }: OrderItemGroupProps) {
   return (
     <Disclosure defaultOpen>
       <Disclosure.Button className='w-full'>
@@ -37,7 +38,7 @@ export function OrderItemGroup({ groupedItems, className, ...props }: OrderItemG
       </Disclosure.Button>
       <Disclosure.Panel>
         {groupedItems.items.map((item) => (
-          <OrderItemDisplay key={item.id} item={item} />
+          <OrderItemDisplay key={item.id} item={item} isPaid={isPaid} />
         ))}
       </Disclosure.Panel>
     </Disclosure>
