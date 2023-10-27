@@ -9,7 +9,7 @@ export function Cart() {
   const itemCount = data?.items.length ?? 0;
   return (
     <div className='relative'>
-      <Button href={'/cart'} size='sm' variant='subtle' iconBefore={TbShoppingCart} />
+      <Button as='link' href='/cart' size='sm' variant='subtle' iconBefore={TbShoppingCart} />
       <CartItemCountIndicator count={itemCount} />
     </div>
   );
