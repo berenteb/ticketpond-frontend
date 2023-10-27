@@ -11,7 +11,7 @@ export function Navbar() {
   const pathname = usePathname();
   if (pathname === '/profile/create') return null;
   return (
-    <nav className='shadow-sm py-5 bg-white sticky top-0'>
+    <nav className='shadow-sm py-5 bg-white sticky top-0 hidden md:block'>
       <div className='flex flex-nowrap justify-between items-center max-w-screen-lg w-full mx-auto px-5'>
         <Link href='/'>
           <div className='flex flex-nowrap items-center'>

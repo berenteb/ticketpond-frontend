@@ -1,3 +1,4 @@
+import { MobileNavbar } from '@/components/navbar/MobileNavbar';
 import { Navbar } from '@/components/navbar/Navbar';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import type { Metadata } from 'next';
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <UserProvider>
         <body className={inter.className}>
           <Navbar />
+          <MobileNavbar />
           {children}
         </body>
       </UserProvider>

@@ -7,7 +7,7 @@ interface BadgeProps {
 
 export function Badge({ text = 'Ismeretlen', color = BadgeColors.GRAY }: BadgeProps) {
   return (
-    <div className={clsx('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium', color)}>
+    <div className={clsx('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium truncate', color)}>
       {text.toUpperCase()}
     </div>
   );

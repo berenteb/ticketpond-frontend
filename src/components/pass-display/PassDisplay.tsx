@@ -14,7 +14,7 @@ export function PassDisplay({ orderItem }: PassDisplayProps) {
     <Popover className='relative'>
       <Popover.Button>
         <Button variant='subtle' className='px-4' iconBefore={TbQrcode} iconAfter={TbChevronDown}>
-          Belépők
+          <span className='hidden sm:block'>Belépők</span>
         </Button>
       </Popover.Button>
       <Popover.Panel className='absolute w-40 flex flex-col bg-white rounded shadow-md'>

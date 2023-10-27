@@ -21,19 +21,22 @@ export function OrderListItem({ order, className, href, ...props }: OrderListIte
   const sumPrice = order.items.reduce((acc, item) => acc + item.price, 0);
   return (
     <Link href={href}>
-      <Card className={clsx('flex items-center gap-5 justify-between p-5', className)} {...props}>
-        <div className='text-left'>
-          <h3 className='text-xl font-bold'>{order.serialNumber}</h3>
+      <Card
+        className={clsx('flex sm:items-center gap-5 justify-between p-5 flex-col sm:flex-row', className)}
+        {...props}
+      >
+        <div className='text-left truncate'>
+          <h3 className='text-xl font-bold truncate'>{order.serialNumber}</h3>
           <p className='text-gray-500'>{order.items.length} tétel</p>
         </div>
-        <div className='flex gap-5 items-center'>
+        <div className='flex gap-5 items-center max-w-full self-end sm:self-auto'>
           <Badge text={OrderStatusBadgeText[order.orderStatus]} color={OrderStatusBadgeColor[order.orderStatus]} />
           <Badge
             text={PaymentStatusBadgeText[order.paymentStatus]}
             color={PaymentStatusBadgeColor[order.paymentStatus]}
           />
-          <p className='text-xl font-bold text-gray-500'>{sumPrice.toLocaleString()} Ft</p>
-          <span className='text-gray-500'>
+          <p className='text-xl font-bold text-gray-500 whitespace-nowrap'>{sumPrice.toLocaleString()} Ft</p>
+          <span className='text-gray-500 hidden sm:block'>
             <TbChevronRight size={30} />
           </span>
         </div>

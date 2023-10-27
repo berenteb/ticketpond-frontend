@@ -25,7 +25,7 @@ export function AuthMenu() {
         <Menu.Button className='text-lg flex items-center gap-2'>
           Profil <TbChevronDown />
         </Menu.Button>
-        <Menu.Items className='absolute right-0 top-full bg-white shadow-lg rounded-md flex flex-col p-5 gap-3'>
+        <Menu.Items className='absolute left-0 top-full bg-white shadow-lg rounded-md flex flex-col p-5 gap-3'>
           <Menu.Item>
             <TextLink className='text-lg' href='/profile/orders'>
               Rendeléseim

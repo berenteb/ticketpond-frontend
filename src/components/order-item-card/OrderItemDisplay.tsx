@@ -17,7 +17,7 @@ export function OrderItemDisplay({ item, isPaid, className, ...props }: OrderIte
       </div>
       <div className='flex gap-5 items-center'>
         {isPaid && <PassDisplay orderItem={item} />}
-        <p className='font-bold text-lg'>{item.ticket.price.toLocaleString()} Ft</p>
+        <p className='font-bold text-lg whitespace-nowrap'>{item.ticket.price.toLocaleString()} Ft</p>
       </div>
     </div>
   );
