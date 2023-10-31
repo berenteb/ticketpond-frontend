@@ -22,6 +22,18 @@ authenticatedAxios.interceptors.request.use(async (config) => {
   return config;
 });
 
+authenticatedAxios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response.status === 401) {
+      location.href = '/login';
+    } else if (error.response.status === 403) {
+      location.href = '/';
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const authenticatedApiService = new DefaultApi(
   undefined,
   process.env.NEXT_PUBLIC_BACKEND_URL,
