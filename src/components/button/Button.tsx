@@ -35,7 +35,7 @@ export function Button({
   const IconAfter = iconAfter;
   const isIconOnly = !children && (IconBefore || IconAfter);
   const classNames = clsx(
-    'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center',
+    'px-20 py-3 rounded-md transition-colors flex gap-3 items-center justify-center truncate',
     {
       'px-3': isIconOnly,
       'bg-primary-500 hover:bg-opacity-80 text-white shadow-md shadow-primary-300': variant === 'primary',
