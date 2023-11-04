@@ -1422,6 +1422,35 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        customerControllerGetPermissions: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/customer/permissions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CreateCustomerDto} createCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3031,6 +3060,15 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async customerControllerGetPermissions(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.customerControllerGetPermissions(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {CreateCustomerDto} createCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3589,6 +3627,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        customerControllerGetPermissions(options?: any): AxiosPromise<Array<string>> {
+            return localVarFp.customerControllerGetPermissions(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CreateCustomerDto} createCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4122,6 +4168,16 @@ export class DefaultApi extends BaseAPI {
      */
     public customerControllerGetMe(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).customerControllerGetMe(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public customerControllerGetPermissions(options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).customerControllerGetPermissions(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

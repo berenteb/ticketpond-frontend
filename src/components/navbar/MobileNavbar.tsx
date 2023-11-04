@@ -2,6 +2,7 @@
 
 import { Cart } from '@/components/cart/Cart';
 import { Logo } from '@/components/logo/Logo';
+import { AdminMenu } from '@/components/navbar/AdminMenu';
 import { AuthMenu } from '@/components/navbar/AuthMenu';
 import { TextLink } from '@/components/text-Link/TextLink';
 import { Disclosure } from '@headlessui/react';
@@ -36,9 +37,7 @@ export function MobileNavbar() {
           <TextLink className='text-lg w-full' href='/experience'>
             Élmények
           </TextLink>
-          <TextLink className='text-lg w-full' href='/merchant/admin'>
-            Admin
-          </TextLink>
+          <AdminMenu />
           <AuthMenu />
         </Disclosure.Panel>
       </Disclosure>

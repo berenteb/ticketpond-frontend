@@ -2,6 +2,7 @@
 
 import { Cart } from '@/components/cart/Cart';
 import { Logo } from '@/components/logo/Logo';
+import { AdminMenu } from '@/components/navbar/AdminMenu';
 import { AuthMenu } from '@/components/navbar/AuthMenu';
 import { TextLink } from '@/components/text-Link/TextLink';
 import Link from 'next/link';
@@ -26,9 +27,7 @@ export function Navbar() {
           <TextLink className='text-lg' href='/experience'>
             Élmények
           </TextLink>
-          <TextLink className='text-lg' href='/merchant/admin'>
-            Admin
-          </TextLink>
+          <AdminMenu />
           <AuthMenu />
           <Cart />
         </div>

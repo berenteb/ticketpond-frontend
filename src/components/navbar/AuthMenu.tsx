@@ -1,12 +1,11 @@
 'use client';
 
+import { DropdownMenu } from '@/components/dropdown-menu/DropdownMenu';
 import { TextLink } from '@/components/text-Link/TextLink';
 import { authenticatedApiService } from '@/services/authenticatedApi.service';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { Menu } from '@headlessui/react';
 import { isAxiosError } from 'axios';
 import { redirect } from 'next/navigation';
-import { TbChevronDown } from 'react-icons/tb';
 import useSWR from 'swr';
 
 export function AuthMenu() {
@@ -20,29 +19,13 @@ export function AuthMenu() {
     );
   if (user && isAxiosError(error) && error.response?.status === 404) return redirect('/profile/create');
   return (
-    <div className='relative'>
-      <Menu>
-        <Menu.Button className='text-lg flex items-center gap-2'>
-          Profil <TbChevronDown />
-        </Menu.Button>
-        <Menu.Items className='absolute left-0 top-full bg-white shadow-lg rounded-md flex flex-col p-5 gap-3'>
-          <Menu.Item>
-            <TextLink className='text-lg' href='/profile/orders'>
-              Rendeléseim
-            </TextLink>
-          </Menu.Item>
-          <Menu.Item>
-            <TextLink className='text-lg' href='/profile'>
-              Profilom
-            </TextLink>
-          </Menu.Item>
-          <Menu.Item>
-            <TextLink className='text-lg' href='/api/auth/logout'>
-              Kijelentkezés
-            </TextLink>
-          </Menu.Item>
-        </Menu.Items>
-      </Menu>
-    </div>
+    <DropdownMenu
+      title='Profil'
+      items={[
+        { title: 'Profilom', href: '/profile' },
+        { title: 'Rendeléseim', href: '/profile/orders' },
+        { title: 'Kijelentkezés', href: '/api/auth/logout' },
+      ]}
+    />
   );
 }
