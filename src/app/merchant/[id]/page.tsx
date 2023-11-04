@@ -1,9 +1,25 @@
 import { TextLink } from '@/components/text-Link/TextLink';
 import { publicApiService } from '@/services/publicApiService';
+import { ParamProps } from '@/types/common.types';
+import { getSuffixedTitle } from '@/utils/common.utils';
+import { Metadata } from 'next';
 import { cache } from 'react';
 import { TbBuilding, TbMail, TbPhone } from 'react-icons/tb';
 
-export default async function MerchantDetailsPage({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: ParamProps): Promise<Metadata> {
+  const merchant = await getMerchantById(params.id);
+
+  return {
+    title: getSuffixedTitle(merchant.name),
+    description: merchant.description,
+    openGraph: {
+      description: merchant.description,
+      title: getSuffixedTitle(merchant.name),
+    },
+  };
+}
+
+export default async function MerchantDetailsPage({ params }: ParamProps) {
   const merchant = await getMerchantById(params.id);
   if (!merchant) return null;
   return (

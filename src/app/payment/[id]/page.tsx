@@ -2,6 +2,7 @@
 
 import { CheckoutForm } from '@/components/checkout-form/CheckoutForm';
 import { Spinner } from '@/components/spinner/Spinner';
+import { Title } from '@/components/title/Title';
 import { usePaymentIntent } from '@/hooks/customer/payment/usePaymentIntent';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { Elements } from '@stripe/react-stripe-js';
@@ -29,6 +30,7 @@ export default withPageAuthRequired(function PaymentPage() {
 
   return (
     <main>
+      <Title>Rendelés kifizetése</Title>
       <h1>Rendelés kifizetése</h1>
       <Elements options={options} stripe={stripePromise}>
         <CheckoutForm clientSecret={paymentIntent.data.clientSecret} orderId={id} />

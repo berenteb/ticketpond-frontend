@@ -3,6 +3,7 @@
 import { CreateMerchantDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Title } from '@/components/title/Title';
 import { useMerchantMe } from '@/hooks/merchant/profile/useMerchantMe';
 import { useRegisterMerchant } from '@/hooks/merchant/profile/useRegisterMerchant';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -41,6 +42,7 @@ export default withPageAuthRequired(function CreateMerchantPage() {
   if (me.data) router.push('/merchant/profile');
   return (
     <main>
+      <Title>Kereskedő létrehozása</Title>
       <h1>Kereskedő létrehozása</h1>
       <p>Üdvözöllek a Ticketpondon! A következő lépésekkel tudsz kereskedőt létrehozni:</p>
       <form onSubmit={handleSubmit(onSubmit)}>

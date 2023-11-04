@@ -1,6 +1,13 @@
 import { ExperienceCard } from '@/components/experience-card/ExperienceCard';
 import { publicApiService } from '@/services/publicApiService';
+import { getSuffixedTitle } from '@/utils/common.utils';
 import { setBannerImages } from '@/utils/image.utils';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: getSuffixedTitle('Kezdőlap'),
+  description: 'Ahol az élmények kezdődnek.',
+};
 
 export default async function Home() {
   const experiences = await publicApiService.experienceControllerGetExperiences();

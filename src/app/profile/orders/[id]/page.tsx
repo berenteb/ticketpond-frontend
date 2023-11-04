@@ -4,6 +4,7 @@ import { Badge } from '@/components/badge/Badge';
 import { Button } from '@/components/button/Button';
 import { OrderItemGroup } from '@/components/order-item-card/OrderItemGroup';
 import { Spinner } from '@/components/spinner/Spinner';
+import { Title } from '@/components/title/Title';
 import { useOrder } from '@/hooks/customer/order/useOrder';
 import {
   groupItemsByExperience,
@@ -31,6 +32,7 @@ export default withPageAuthRequired(function ProfileOrderPage() {
   if (!data) return null;
   return (
     <main>
+      <Title>Rendelés {data.serialNumber}</Title>
       <h1>
         Rendelés megtekintése <span className='text-slate-300'>| {data.serialNumber}</span>
       </h1>

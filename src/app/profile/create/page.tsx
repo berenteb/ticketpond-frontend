@@ -3,6 +3,7 @@
 import { CreateCustomerDto } from '@/api';
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/form/input/Input';
+import { Title } from '@/components/title/Title';
 import { useCreateCustomer } from '@/hooks/customer/profile/useCreateCustomer';
 import { useMe } from '@/hooks/customer/profile/useMe';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -47,6 +48,7 @@ export default withPageAuthRequired(function CreateProfilePage() {
   if (me.data) router.push('/profile');
   return (
     <main>
+      <Title>Fiók létrehozása</Title>
       <h1>Fiók létrehozása</h1>
       <p>Üdvözöllek a Ticketpondon! A következő lépésekkel tudsz fiókot létrehozni:</p>
       <form onSubmit={handleSubmit(onSubmit)}>

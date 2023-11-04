@@ -1,11 +1,32 @@
 import { TextLink } from '@/components/text-Link/TextLink';
 import { TicketCard } from '@/components/ticket-card/TicketCard';
 import { publicApiService } from '@/services/publicApiService';
+import { getSuffixedTitle } from '@/utils/common.utils';
 import { setBannerImage } from '@/utils/image.utils';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { cache } from 'react';
 
-export default async function ExperienceDetailsPage({ params }: { params: { id: string } }) {
+interface ExperienceDetailsPageProps {
+  params: { id: string };
+}
+
+export async function generateMetadata({ params }: ExperienceDetailsPageProps): Promise<Metadata> {
+  const experienceRaw = await getExperienceById(params.id);
+  const experience = setBannerImage(experienceRaw);
+
+  return {
+    title: getSuffixedTitle(experience.name),
+    description: experience.description,
+    openGraph: {
+      images: [experience.bannerImage],
+      description: experience.description,
+      title: getSuffixedTitle(experience.name),
+    },
+  };
+}
+
+export default async function ExperienceDetailsPage({ params }: ExperienceDetailsPageProps) {
   const experienceRaw = await getExperienceById(params.id);
   const experience = setBannerImage(experienceRaw);
   if (!experience) return null;

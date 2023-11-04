@@ -3,6 +3,7 @@
 import { OrderDto } from '@/api';
 import { OrderListItem } from '@/components/order-list-item/OrderListItem';
 import { Spinner } from '@/components/spinner/Spinner';
+import { Title } from '@/components/title/Title';
 import { useOrders } from '@/hooks/customer/order/useOrders';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { isSameDay } from 'date-fns';
@@ -13,6 +14,7 @@ export default withPageAuthRequired(function ProfileOrdersPage() {
   const groupedDates = useMemo(() => groupOrdersByDate(data ?? []), [data]);
   return (
     <main>
+      <Title>Rendeléseim</Title>
       <h1>Rendeléseim</h1>
       {isLoading && <Spinner />}
       <ul className='flex flex-col gap-5'>

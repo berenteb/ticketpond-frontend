@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/button/Button';
 import { Spinner } from '@/components/spinner/Spinner';
+import { Title } from '@/components/title/Title';
 import { useOrder } from '@/hooks/customer/order/useOrder';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { useParams } from 'next/navigation';
@@ -20,6 +21,7 @@ export default withPageAuthRequired(function PaymentSuccessPage() {
   if (!order.data) return null;
   return (
     <main className='flex items-center justify-center flex-1'>
+      <Title>Sikeres fizetés</Title>
       <div className='flex flex-col items-center gap-5'>
         <TbCircleCheckFilled size={50} className='text-green-500' />
         <div className='text-center'>
