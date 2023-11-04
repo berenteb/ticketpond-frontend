@@ -1,11 +1,13 @@
 import { TextLink } from '@/components/text-Link/TextLink';
 import { TicketCard } from '@/components/ticket-card/TicketCard';
 import { publicApiService } from '@/services/publicApiService';
+import { setBannerImage } from '@/utils/image.utils';
 import Image from 'next/image';
 import { cache } from 'react';
 
 export default async function ExperienceDetailsPage({ params }: { params: { id: string } }) {
-  const experience = await getExperienceById(params.id);
+  const experienceRaw = await getExperienceById(params.id);
+  const experience = setBannerImage(experienceRaw);
   if (!experience) return null;
   return (
     <main>

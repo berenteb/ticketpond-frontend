@@ -21,7 +21,7 @@ export function ExperienceCard({ experience, ...props }: ExperienceCardProps) {
         />
         <div className='flex flex-col p-5'>
           <h3 className='text-xl font-bold'>{experience.name}</h3>
-          <p className='text-gray-500'>{experience.description}</p>
+          <p className='text-gray-500 truncate'>{experience.description}</p>
         </div>
       </Card>
     </Link>

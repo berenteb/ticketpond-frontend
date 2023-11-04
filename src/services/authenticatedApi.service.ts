@@ -12,7 +12,7 @@ async function getToken(): Promise<string | undefined> {
   }
 }
 
-const authenticatedAxios = axios.create();
+export const authenticatedAxios = axios.create();
 
 authenticatedAxios.interceptors.request.use(async (config) => {
   const accessToken = await getToken();
@@ -26,7 +26,7 @@ authenticatedAxios.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response.status === 401) {
-      location.href = '/login';
+      location.href = '/api/auth/login';
     } else if (error.response.status === 403) {
       location.href = '/';
     }

@@ -1058,6 +1058,44 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @param {File} [file] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        assetControllerUploadFile: async (file?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/asset/upload`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+
+            if (file !== undefined) { 
+                localVarFormParams.append('file', file as any);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {AddToCartDto} addToCartDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2374,6 +2412,39 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        passControllerGetQrcode: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('passControllerGetQrcode', 'id', id)
+            const localVarPath = `/pass/qr/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         paymentControllerCreatePaymentIntent: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('paymentControllerCreatePaymentIntent', 'id', id)
@@ -2853,6 +2924,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {File} [file] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async assetControllerUploadFile(file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.assetControllerUploadFile(file, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {AddToCartDto} addToCartDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3249,6 +3330,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        async passControllerGetQrcode(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.passControllerGetQrcode(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         async paymentControllerCreatePaymentIntent(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.paymentControllerCreatePaymentIntent(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -3399,6 +3490,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         appControllerGetHello(options?: any): AxiosPromise<void> {
             return localVarFp.appControllerGetHello(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {File} [file] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        assetControllerUploadFile(file?: File, options?: any): AxiosPromise<string> {
+            return localVarFp.assetControllerUploadFile(file, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3758,6 +3858,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        passControllerGetQrcode(id: string, options?: any): AxiosPromise<void> {
+            return localVarFp.passControllerGetQrcode(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         paymentControllerCreatePaymentIntent(id: string, options?: any): AxiosPromise<PaymentDto> {
             return localVarFp.paymentControllerCreatePaymentIntent(id, options).then((request) => request(axios, basePath));
         },
@@ -3895,6 +4004,17 @@ export class DefaultApi extends BaseAPI {
      */
     public appControllerGetHello(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).appControllerGetHello(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {File} [file] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public assetControllerUploadFile(file?: File, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).assetControllerUploadFile(file, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4327,6 +4447,17 @@ export class DefaultApi extends BaseAPI {
      */
     public orderMerchantControllerGetOrders(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).orderMerchantControllerGetOrders(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public passControllerGetQrcode(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).passControllerGetQrcode(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
