@@ -1020,6 +1020,50 @@ export interface UpdateTicketDto {
      */
     'validTo'?: string;
 }
+/**
+ * 
+ * @export
+ * @interface ValidationRequestDto
+ */
+export interface ValidationRequestDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidationRequestDto
+     */
+    'ticketSerialNumber': string;
+}
+/**
+ * 
+ * @export
+ * @interface ValidationResponseDto
+ */
+export interface ValidationResponseDto {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ValidationResponseDto
+     */
+    'isValid': boolean;
+    /**
+     * 
+     * @type {DeepOrderItemDto}
+     * @memberof ValidationResponseDto
+     */
+    'orderItem': DeepOrderItemDto;
+    /**
+     * 
+     * @type {CustomerDto}
+     * @memberof ValidationResponseDto
+     */
+    'customer': CustomerDto;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidationResponseDto
+     */
+    'message': string;
+}
 
 /**
  * DefaultApi - axios parameter creator
@@ -1843,6 +1887,45 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updateExperienceDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {ValidationRequestDto} validationRequestDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceMerchantControllerValidateExperiencePass: async (id: string, validationRequestDto: ValidationRequestDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('experienceMerchantControllerValidateExperiencePass', 'id', id)
+            // verify required parameter 'validationRequestDto' is not null or undefined
+            assertParamExists('experienceMerchantControllerValidateExperiencePass', 'validationRequestDto', validationRequestDto)
+            const localVarPath = `/merchant-admin/experience/{id}/validate`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(validationRequestDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3188,6 +3271,17 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} id 
+         * @param {ValidationRequestDto} validationRequestDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async experienceMerchantControllerValidateExperiencePass(id: string, validationRequestDto: ValidationRequestDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidationResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.experienceMerchantControllerValidateExperiencePass(id, validationRequestDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {CreateMerchantDto} createMerchantDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3739,6 +3833,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         experienceMerchantControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: any): AxiosPromise<ExperienceDto> {
             return localVarFp.experienceMerchantControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {ValidationRequestDto} validationRequestDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        experienceMerchantControllerValidateExperiencePass(id: string, validationRequestDto: ValidationRequestDto, options?: any): AxiosPromise<ValidationResponseDto> {
+            return localVarFp.experienceMerchantControllerValidateExperiencePass(id, validationRequestDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4309,6 +4413,18 @@ export class DefaultApi extends BaseAPI {
      */
     public experienceMerchantControllerUpdateExperience(id: string, updateExperienceDto: UpdateExperienceDto, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).experienceMerchantControllerUpdateExperience(id, updateExperienceDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {ValidationRequestDto} validationRequestDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public experienceMerchantControllerValidateExperiencePass(id: string, validationRequestDto: ValidationRequestDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).experienceMerchantControllerValidateExperiencePass(id, validationRequestDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

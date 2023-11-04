@@ -13,7 +13,7 @@ export function AdminMenu() {
       <DropdownMenu
         title='Admin'
         items={[
-          { title: 'Kereskedő admin', href: '/merhcant/admin' },
+          { title: 'Kereskedő admin', href: '/merchant/admin' },
           { title: 'Szuperdmin', href: '/admin' },
         ]}
       />
