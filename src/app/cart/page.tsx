@@ -6,6 +6,7 @@ import { Title } from '@/components/title/Title';
 import { useCart } from '@/hooks/customer/cart/useCart';
 import { useCheckout } from '@/hooks/customer/cart/useCheckout';
 import { groupItemsByExperience } from '@/utils/cart.utils';
+import { setBannerImage } from '@/utils/image.utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -14,6 +15,7 @@ export default function CartPage() {
   const checkout = useCheckout();
   const router = useRouter();
   const groupedItems = groupItemsByExperience(data?.items ?? []);
+  groupedItems.forEach((groupedItem) => (groupedItem.experience = setBannerImage(groupedItem.experience)));
 
   const onCheckout = async () => {
     checkout.trigger().then((url) => router.push(url));
