@@ -17,7 +17,7 @@ export function PassDisplay({ orderItem }: PassDisplayProps) {
           <span className='hidden sm:block'>Belépők</span>
         </Button>
       </Popover.Button>
-      <Popover.Panel className='absolute w-40 flex flex-col bg-white rounded shadow-md'>
+      <Popover.Panel className='absolute w-40 flex flex-col bg-white rounded shadow-md z-10'>
         <a
           className={classNames}
           href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/cdn/passes/apple/${orderItem.id}.pkpass`}
