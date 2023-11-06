@@ -269,6 +269,12 @@ export interface CustomerDto {
      * @type {string}
      * @memberof CustomerDto
      */
+    'internalId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerDto
+     */
     'firstName': string;
     /**
      * 
@@ -1303,15 +1309,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerDeleteCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerAdminControllerDeleteCustomer', 'id', id)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        customerAdminControllerDeleteCustomerByInternalId: async (internalId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'internalId' is not null or undefined
+            assertParamExists('customerAdminControllerDeleteCustomerByInternalId', 'internalId', internalId)
+            const localVarPath = `/customer/{internalId}`
+                .replace(`{${"internalId"}}`, encodeURIComponent(String(internalId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1336,15 +1342,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerGetCustomer: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerAdminControllerGetCustomer', 'id', id)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        customerAdminControllerGetCustomerByInternalId: async (internalId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'internalId' is not null or undefined
+            assertParamExists('customerAdminControllerGetCustomerByInternalId', 'internalId', internalId)
+            const localVarPath = `/customer/{internalId}`
+                .replace(`{${"internalId"}}`, encodeURIComponent(String(internalId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1398,18 +1404,18 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {UpdateCustomerDto} updateCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerUpdateCustomer: async (id: string, updateCustomerDto: UpdateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('customerAdminControllerUpdateCustomer', 'id', id)
+        customerAdminControllerUpdateCustomerByInternalId: async (internalId: string, updateCustomerDto: UpdateCustomerDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'internalId' is not null or undefined
+            assertParamExists('customerAdminControllerUpdateCustomerByInternalId', 'internalId', internalId)
             // verify required parameter 'updateCustomerDto' is not null or undefined
-            assertParamExists('customerAdminControllerUpdateCustomer', 'updateCustomerDto', updateCustomerDto)
-            const localVarPath = `/customer/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            assertParamExists('customerAdminControllerUpdateCustomerByInternalId', 'updateCustomerDto', updateCustomerDto)
+            const localVarPath = `/customer/{internalId}`
+                .replace(`{${"internalId"}}`, encodeURIComponent(String(internalId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3094,22 +3100,22 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async customerAdminControllerDeleteCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerDeleteCustomer(id, options);
+        async customerAdminControllerDeleteCustomerByInternalId(internalId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerDeleteCustomerByInternalId(internalId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async customerAdminControllerGetCustomer(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerGetCustomer(id, options);
+        async customerAdminControllerGetCustomerByInternalId(internalId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerGetCustomerByInternalId(internalId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3123,13 +3129,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {UpdateCustomerDto} updateCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async customerAdminControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerUpdateCustomer(id, updateCustomerDto, options);
+        async customerAdminControllerUpdateCustomerByInternalId(internalId: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.customerAdminControllerUpdateCustomerByInternalId(internalId, updateCustomerDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3677,21 +3683,21 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerDeleteCustomer(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.customerAdminControllerDeleteCustomer(id, options).then((request) => request(axios, basePath));
+        customerAdminControllerDeleteCustomerByInternalId(internalId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.customerAdminControllerDeleteCustomerByInternalId(internalId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerGetCustomer(id: string, options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerAdminControllerGetCustomer(id, options).then((request) => request(axios, basePath));
+        customerAdminControllerGetCustomerByInternalId(internalId: string, options?: any): AxiosPromise<CustomerDto> {
+            return localVarFp.customerAdminControllerGetCustomerByInternalId(internalId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3703,13 +3709,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} id 
+         * @param {string} internalId 
          * @param {UpdateCustomerDto} updateCustomerDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        customerAdminControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
-            return localVarFp.customerAdminControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(axios, basePath));
+        customerAdminControllerUpdateCustomerByInternalId(internalId: string, updateCustomerDto: UpdateCustomerDto, options?: any): AxiosPromise<CustomerDto> {
+            return localVarFp.customerAdminControllerUpdateCustomerByInternalId(internalId, updateCustomerDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4222,24 +4228,24 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} id 
+     * @param {string} internalId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public customerAdminControllerDeleteCustomer(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerAdminControllerDeleteCustomer(id, options).then((request) => request(this.axios, this.basePath));
+    public customerAdminControllerDeleteCustomerByInternalId(internalId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).customerAdminControllerDeleteCustomerByInternalId(internalId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} id 
+     * @param {string} internalId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public customerAdminControllerGetCustomer(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerAdminControllerGetCustomer(id, options).then((request) => request(this.axios, this.basePath));
+    public customerAdminControllerGetCustomerByInternalId(internalId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).customerAdminControllerGetCustomerByInternalId(internalId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4254,14 +4260,14 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} id 
+     * @param {string} internalId 
      * @param {UpdateCustomerDto} updateCustomerDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public customerAdminControllerUpdateCustomer(id: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).customerAdminControllerUpdateCustomer(id, updateCustomerDto, options).then((request) => request(this.axios, this.basePath));
+    public customerAdminControllerUpdateCustomerByInternalId(internalId: string, updateCustomerDto: UpdateCustomerDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).customerAdminControllerUpdateCustomerByInternalId(internalId, updateCustomerDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
