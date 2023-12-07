@@ -2,19 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground: #000;
-  --background: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: #fff;
-    --background: #000;
-  }
-}
-
 body {
-    color: var(--foreground);
-    background-color: var(--background);
+  @apply bg-slate-50 min-h-screen;
+}
+
+main {
+  @apply w-full max-w-screen-lg mx-auto py-10 px-5;
+}
+
+main > *:not(:first-child) {
+  @apply mt-10;
+}
+
+p {
+  @apply text-slate-500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-slate-800;
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}
+
+form {
+  @apply flex flex-col;
+}
+
+label {
+  @apply text-slate-500;
+}
+
+input,
+select {
+  @apply w-full border border-slate-200 rounded-md px-3 py-2 appearance-none;
+}
+
+input.invalid {
+  @apply border-red-500;
+}
+
+div.inputGroup {
+  @apply flex flex-col mt-5;
 }
