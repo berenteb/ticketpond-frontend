@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint \"src/**/*.(ts|tsx)\" --fix",
+    "lint:check": "eslint \"src/**/*.(ts|tsx)\"",
+    "prettier": "prettier --write \"src/**/*.(ts|tsx)\"",
+    "prettier:check": "prettier --check \"src/**/*.(ts|tsx)\"",
     "generate-api": "openapi-generator-cli generate -i http://localhost:3001/api-json -g typescript-axios -o src/api"
   },
   "dependencies": {
