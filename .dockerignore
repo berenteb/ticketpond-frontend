@@ -1,0 +1,9 @@
+*
+!src
+!public
+!tsconfig.json
+!package.json
+!yarn.lock
+!next.config.js
+!postcss.config.js
+!tailwind.config.ts

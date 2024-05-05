@@ -27,7 +27,7 @@ export function PassDisplay({ orderItem }: PassDisplayProps) {
         <a
           className={classNames}
           target='_blank'
-          href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/pass/qr/${orderItem.serialNumber}`}
+          href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/cdn/passes/image/${orderItem.serialNumber}.png`}
         >
           QR kód
         </a>

@@ -1,9 +1,9 @@
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { customerApi } from '@/services/authenticated-api.service';
 import useSWR from 'swr';
 
 export function usePermissions() {
   return useSWR('usePermissions', async () => {
-    const response = await authenticatedApiService.customerControllerGetPermissions();
+    const response = await customerApi.customerControllerGetPermissions();
     return response.data;
   });
 }

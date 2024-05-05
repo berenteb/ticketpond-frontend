@@ -25,7 +25,7 @@ export default withPageAuthRequired(function PaymentPage() {
   if (!paymentIntent.data) return null;
 
   const options: StripeElementsOptions = {
-    clientSecret: paymentIntent.data.clientSecret,
+    clientSecret: paymentIntent.data?.clientSecret,
   };
 
   return (

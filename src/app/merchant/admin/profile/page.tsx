@@ -25,7 +25,7 @@ const schema: ObjectSchema<UpdateMerchantDto> = yup.object().shape({
 export default withPageAuthRequired(function MerchantProfilePage() {
   const router = useRouter();
   const { data, isLoading } = useMerchantMe();
-  const updateMerchant = useSelfUpdateMerchant(data?.id ?? '');
+  const updateMerchant = useSelfUpdateMerchant();
   const {
     register,
     handleSubmit,

@@ -32,14 +32,14 @@ export default withPageAuthRequired(function CreateMerchantPage() {
     formState: { errors },
   } = useForm<CreateMerchantDto>({ resolver: yupResolver(schema) });
   const onSubmit = (data: CreateMerchantDto) => {
-    registerMerchant.trigger(data).then(() => router.push('/merchant/profile'));
+    registerMerchant.trigger(data).then(() => router.push('/merchant/admin/profile'));
   };
   useEffect(() => {
     if (registerMerchant.data) {
       router.push('/profile');
     }
   }, [registerMerchant.data]);
-  if (me.data) router.push('/merchant/profile');
+  if (me.data) router.push('/merchant/admin/profile');
   return (
     <main>
       <Title>Kereskedő létrehozása</Title>

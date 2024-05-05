@@ -27,9 +27,9 @@ export function CartTicketGroup({ groupedItem, className, onCountChange, ...prop
                 height={200}
                 className='w-32 h-20 object-cover object-center'
               />
-              <div className='text-left'>
+              <div className='text-left overflow-hidden'>
                 <h3 className='text-xl font-bold'>{groupedItem.experience.name}</h3>
-                <p className='text-gray-500'>{groupedItem.experience.description}</p>
+                <p className='text-gray-500 truncate overflow-hidden'>{groupedItem.experience.description}</p>
               </div>
             </div>
             <Button variant='subtle' iconBefore={open ? TbChevronUp : TbChevronDown} />

@@ -1,10 +1,10 @@
 import { UpdateMerchantDto } from '@/api';
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { merchantSelfApi } from '@/services/authenticated-api.service';
 import useSWRMutation from 'swr/mutation';
 
-export function useSelfUpdateMerchant(id: string) {
-  return useSWRMutation(['useSelfUpdateMerchant', id], async (_: string[], { arg }: { arg: UpdateMerchantDto }) => {
-    const response = await authenticatedApiService.merchantAdminControllerUpdateMerchant(id, arg);
+export function useSelfUpdateMerchant() {
+  return useSWRMutation(['useSelfUpdateMerchant'], async (_: string[], { arg }: { arg: UpdateMerchantDto }) => {
+    const response = await merchantSelfApi.merchantSelfControllerUpdateMerchantMe(arg);
     return response.data;
   });
 }

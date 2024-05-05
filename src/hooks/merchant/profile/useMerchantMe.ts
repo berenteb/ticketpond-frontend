@@ -1,9 +1,9 @@
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { merchantSelfApi } from '@/services/authenticated-api.service';
 import useSWR from 'swr';
 
 export function useMerchantMe() {
   return useSWR('useMerchantMe', async () => {
-    const response = await authenticatedApiService.merchantSelfControllerGetMerchantMe();
+    const response = await merchantSelfApi.merchantSelfControllerGetMerchantMe();
     return response.data;
   });
 }

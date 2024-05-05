@@ -1,4 +1,4 @@
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { assetApi } from '@/services/public-api.service';
 import useSWRMutation from 'swr/mutation';
 
 export function useAssetUpload(onSuccess?: (fileName: string) => void, onError?: () => void) {
@@ -12,7 +12,7 @@ export function useAssetUpload(onSuccess?: (fileName: string) => void, onError?:
         arg: File;
       }
     ) => {
-      const response = await authenticatedApiService.assetControllerUploadFile(arg);
+      const response = await assetApi.assetControllerUploadFile(arg);
       return response.data;
     },
     { onSuccess, onError }

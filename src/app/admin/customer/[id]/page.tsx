@@ -59,7 +59,7 @@ export default withPageAuthRequired(function AdminCustomerPage() {
           {...register('address')}
         />
         <Button className='mt-5' type='submit' isLoading={updateCustomer.isMutating}>
-          Létrehozom!
+          Mentés
         </Button>
       </form>
     </>

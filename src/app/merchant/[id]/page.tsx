@@ -1,5 +1,5 @@
 import { TextLink } from '@/components/text-Link/TextLink';
-import { publicApiService } from '@/services/publicApiService';
+import { merchantApi } from '@/services/public-api.service';
 import { ParamProps } from '@/types/common.types';
 import { getSuffixedTitle } from '@/utils/common.utils';
 import { Metadata } from 'next';
@@ -45,6 +45,6 @@ export default async function MerchantDetailsPage({ params }: ParamProps) {
 }
 
 const getMerchantById = cache(async (id: string) => {
-  const res = await publicApiService.merchantControllerGetMerchant(id);
+  const res = await merchantApi.merchantControllerGetMerchant(id);
   return res.data;
 });

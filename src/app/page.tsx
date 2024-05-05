@@ -1,5 +1,5 @@
 import { ExperienceCard } from '@/components/experience-card/ExperienceCard';
-import { publicApiService } from '@/services/publicApiService';
+import { experienceApi } from '@/services/public-api.service';
 import { getSuffixedTitle } from '@/utils/common.utils';
 import { setBannerImages } from '@/utils/image.utils';
 import { Metadata } from 'next';
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const experiences = await publicApiService.experienceControllerGetExperiences();
+  const experiences = await experienceApi.experienceControllerGetExperiences();
   const experiencesWithImages = setBannerImages(experiences.data);
   return (
     <main>

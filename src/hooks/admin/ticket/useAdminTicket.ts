@@ -1,9 +1,9 @@
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { ticketAdminApi } from '@/services/authenticated-api.service';
 import useSWR from 'swr';
 
 export function useAdminTicket(id: string) {
   return useSWR(['useAdminTicket', id], async () => {
-    const response = await authenticatedApiService.ticketAdminControllerGetTicketById(id);
+    const response = await ticketAdminApi.ticketAdminControllerGetTicketById(id);
     return response.data;
   });
 }

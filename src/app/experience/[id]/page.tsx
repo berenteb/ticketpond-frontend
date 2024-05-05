@@ -1,6 +1,6 @@
 import { TextLink } from '@/components/text-Link/TextLink';
 import { TicketCard } from '@/components/ticket-card/TicketCard';
-import { publicApiService } from '@/services/publicApiService';
+import { experienceApi } from '@/services/public-api.service';
 import { getSuffixedTitle } from '@/utils/common.utils';
 import { setBannerImage } from '@/utils/image.utils';
 import { Metadata } from 'next';
@@ -52,6 +52,6 @@ export default async function ExperienceDetailsPage({ params }: ExperienceDetail
 }
 
 const getExperienceById = cache(async (id: string) => {
-  const res = await publicApiService.experienceControllerGetExperienceById(id);
+  const res = await experienceApi.experienceControllerGetExperienceById(id);
   return res.data;
 });

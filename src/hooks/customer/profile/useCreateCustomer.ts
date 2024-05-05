@@ -1,10 +1,10 @@
 import { CreateCustomerDto } from '@/api';
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { customerApi } from '@/services/authenticated-api.service';
 import useSWRMutation from 'swr/mutation';
 
 export function useCreateCustomer() {
   return useSWRMutation('useCreateCustomer', async (_: string, { arg }: { arg: CreateCustomerDto }) => {
-    const response = await authenticatedApiService.customerControllerRegisterCustomer(arg);
+    const response = await customerApi.customerControllerRegisterCustomer(arg);
     return response.data;
   });
 }

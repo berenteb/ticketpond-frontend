@@ -26,9 +26,9 @@ export function CartItemStepper({ ticketId, count, onCountChange, ...props }: Ca
 
   return (
     <div className='flex items-center gap-5 rounded-full border-slate-200' {...props}>
-      <Button size='sm' variant='subtle' iconBefore={count === 1 ? TbTrash : TbMinus} onClick={onDecrement} />
+      <Button variant='subtle' iconBefore={count === 1 ? TbTrash : TbMinus} onClick={onDecrement} />
       <p>{count}</p>
-      <Button size='sm' variant='subtle' iconBefore={TbPlus} onClick={onIncrement} />
+      <Button variant='subtle' iconBefore={TbPlus} onClick={onIncrement} />
     </div>
   );
 }

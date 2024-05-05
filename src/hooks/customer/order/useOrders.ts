@@ -1,9 +1,9 @@
-import { authenticatedApiService } from '@/services/authenticatedApi.service';
+import { orderApi } from '@/services/authenticated-api.service';
 import useSWR from 'swr';
 
 export function useOrders() {
   return useSWR('useOrders', async () => {
-    const response = await authenticatedApiService.orderControllerGetOrdersByUser();
+    const response = await orderApi.orderControllerGetOrdersByUser();
     return response.data;
   });
 }

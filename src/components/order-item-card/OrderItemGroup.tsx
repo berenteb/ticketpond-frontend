@@ -31,7 +31,7 @@ export function OrderItemGroup({ groupedItems, isPaid, className, ...props }: Or
               />
               <div className='text-left'>
                 <h3 className='text-xl font-bold'>{experience.name}</h3>
-                <p className='text-gray-500'>{experience.description}</p>
+                <p className='text-gray-500 truncate'>{experience.description}</p>
               </div>
             </div>
             <Button variant='subtle' iconBefore={open ? TbChevronUp : TbChevronDown} />

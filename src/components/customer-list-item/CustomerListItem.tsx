@@ -11,7 +11,7 @@ interface CustomerListItemProps extends HTMLAttributes<HTMLDivElement> {
 
 export function CustomerListItem({ customer, className, ...props }: CustomerListItemProps) {
   return (
-    <Link href={`/admin/customer/${customer.internalId}`}>
+    <Link href={`/admin/customer/${customer.id}`}>
       <Card className={clsx('flex items-center gap-5 justify-between p-5', className)} {...props}>
         <h3 className='text-xl font-bold'>{customer.email}</h3>
         <span className='text-gray-500'>

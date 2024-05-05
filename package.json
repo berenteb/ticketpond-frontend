@@ -13,14 +13,14 @@
     "generate-api": "openapi-generator-cli generate -i http://localhost:3001/api-json -g typescript-axios -o src/api"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^3.1.0",
+    "@auth0/nextjs-auth0": "^3.5.0",
     "@headlessui/react": "^1.7.17",
     "@hookform/resolvers": "^3.3.1",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
     "@zxing/browser": "^0.1.4",
     "@zxing/library": "^0.20.0",
-    "axios": "^1.5.1",
+    "axios": "1.6.8",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "next": "latest",
